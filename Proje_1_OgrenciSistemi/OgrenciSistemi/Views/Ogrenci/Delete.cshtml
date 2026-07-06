@@ -1,0 +1,37 @@
+﻿@model OgrenciSistemi.Models.Ogrenci
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container-fluid">
+    <h1 class="text-danger">Silme Onayı</h1>
+    <h3>Bu öğrenciyi silmek istediğinize emin misiniz?</h3>
+    <hr />
+
+    @if (ViewBag.VeritabaniHatasi != null)
+    {
+        <div class="alert alert-danger">@ViewBag.VeritabaniHatasi</div>
+    }
+
+    <div class="card shadow mb-4 col-md-6 border-left-danger">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4">Öğrenci Adı:</dt>
+                <dd class="col-sm-8">@Model.OgrenciAdi</dd>
+
+                <dt class="col-sm-4">Öğrenci No:</dt>
+                <dd class="col-sm-8">@Model.OgrenciNo</dd> 
+
+                <dt class="col-sm-4">Bölümü:</dt>
+                <dd class="col-sm-8">@(Model.bolum != null ? Model.bolum.BolumAdi : "Bölüm Yok")</dd>
+            </dl>
+            
+            <hr />
+            
+            <form asp-action="Delete" method="post" novalidate="novalidate">
+                <input type="hidden" asp-for="OgrenciNo" /> <button type="submit" class="btn btn-danger">Evet, Sil</button>
+                <a asp-action="Index" class="btn btn-secondary">Vazgeç</a>
+            </form>
+        </div>
+    </div>
+</div>

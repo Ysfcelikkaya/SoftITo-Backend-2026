@@ -1,0 +1,60 @@
+﻿@model IEnumerable<DbFirstProject.Models.Randevu>
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Randevu Sayfası</h1>
+<p>
+   @*  <a asp-action="Create" class="btn btn-primary">Yeni Randevu</a> *@
+    <a asp-action="Create" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i> Yeni Randevu
+    </a>
+
+    <a asp-action="Rapor" class="btn btn-info text-white ms-2">
+        <i class="bi bi-file-earmark-bar-graph-fill"></i> Gelişmiş Raporlama / Sıralama
+    </a>
+</p>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+               Hasta Adı Soyadı
+            </th>
+            <th>
+                Doktor Adı Soyadı
+            </th>
+            <th>
+                Randevu Tarihi
+            </th>
+            <th>
+                Şikayet
+            </th>
+            <th>
+                İşlemler
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Hasta?.Ad @item.Hasta?.Soyad
+                </td>
+                <td>
+                    @item.Doktor?.Ad @item.Doktor?.Soyad
+                </td>
+                <td>
+                    @item.RandevuTarihi.ToString("dd.MM.yyyy")
+                </td>
+                <td>
+                    @item.Sikayet 
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm">Düzenle</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

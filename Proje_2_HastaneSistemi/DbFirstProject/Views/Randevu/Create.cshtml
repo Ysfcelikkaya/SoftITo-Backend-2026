@@ -1,0 +1,63 @@
+﻿@model DbFirstProject.Models.Randevu
+@{
+    ViewData["Title"] = "Create";
+}
+<h1>Create</h1>
+<h4>Randevu Sistemi</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" class="mb-3">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="HastaId" class="control-label">Hasta Seçin</label>
+                 @* <select asp-for="HastaId" class="form-control" asp-items="ViewBag.HastaId"> *@
+                    <select asp-for="HastaId" class="form-control select2" asp-items="ViewBag.HastaId">
+                     <option value="">--Lütfen Hasta Seçiniz--</option>
+                </select>
+                <span asp-validation-for="HastaId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="DoktorId" class="control-label">Doktor Seçin</label>
+                @* <select asp-for="DoktorId" class="form-control" asp-items="ViewBag.DoktorId"> *@
+                    <select asp-for="DoktorId" class="form-control select2" asp-items="ViewBag.DoktorId">
+                    <option value="">--Lütfen Doktor Seçiniz--</option>
+                </select>
+                <span asp-validation-for="DoktorId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" mb-3>
+                <label asp-for="RandevuTarihi" class="control-label">Randevu Tarihi</label>
+                <input asp-for="RandevuTarihi" type="datetime-local" class="form-control" />
+                <span asp-validation-for="RandevuTarihi" class="text-danger"></span>
+            </div>
+
+           <div class="form-group" mb-3>
+                <label asp-for="Sikayet" class="control-label">Hasta Şikayeti</label>
+                <input asp-for="Sikayet" class="form-control" />
+                <span asp-validation-for="Sikayet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Listeye Dön</a>
+</div>
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+    $('.select2').select2({
+    placeholder: "Arama yapın",
+    allowClear: true
+    });
+    });
+</script>

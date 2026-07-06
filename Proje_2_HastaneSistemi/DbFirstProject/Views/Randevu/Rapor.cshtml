@@ -1,0 +1,89 @@
+﻿@model IEnumerable<DbFirstProject.Models.Randevu>
+@{
+    ViewData["Title"] = "Gelişmiş Raporlama";
+}
+
+<h1>Dinamik Randevu Raporu</h1>
+
+<p>
+    <a asp-action="Index" class="btn btn-secondary">
+        <i class="bi bi-arrow-left-circle"></i> Listeye Geri Dön
+    </a>
+</p>
+
+<form asp-action="Rapor" method="get" class="mb-4 p-3 bg-light rounded border border-secondary-subtle shadow-sm">
+    <div class="row align-items-end g-3">
+
+        <div class="col-md-4">
+            <label class="form-label small fw-bold text-dark">Hasta / Doktor Ara</label>
+            <div class="input-group">
+                <span class="input-group-text bg-white"><i class="bi bi-search text-muted"></i></span>
+                <input type="text" name="aramaKelimeleri" value="@ViewBag.GecerliArama" class="form-control" placeholder="İsim veya soyisim...">
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label small fw-bold text-dark">Sıralama Ölçütü</label>
+            <select name="siralama" class="form-select fw-semibold">
+                <option value="tarih_desc" selected="@(ViewBag.SeciliSira == "tarih_desc")">📅 Tarih: Yeniden Eskiye</option>
+                <option value="tarih_asc" selected="@(ViewBag.SeciliSira == "tarih_asc")">📅 Tarih: Eskiden Yeniye</option>
+                <option value="hasta_asc" selected="@(ViewBag.SeciliSira == "hasta_asc")">👤 Hasta Adı: A -> Z</option>
+                <option value="hasta_desc" selected="@(ViewBag.SeciliSira == "hasta_desc")">👤 Hasta Adı: Z -> A</option>
+                <option value="doktor_asc" selected="@(ViewBag.SeciliSira == "doktor_asc")">👨‍⚕️ Doktor Adı: A -> Z</option>
+                <option value="doktor_desc" selected="@(ViewBag.SeciliSira == "doktor_desc")">👨‍⚕️ Doktor Adı: Z -> A</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary w-100 fw-bold">
+                <i class="bi bi-funnel-fill me-1"></i> Filtrele ve Raporla
+            </button>
+        </div>
+
+    </div>
+</form>
+
+<table class="table table-bordered table-striped shadow-sm">
+    <thead class="table-dark">
+        <tr>
+            <th>Hasta Adı Soyadı</th>
+            <th>Doktor Adı Soyadı</th>
+            <th>Randevu Tarihi</th>
+            <th>Şikayet</th>
+            <th>Poliklinik (Uzmanlık)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Hasta?.Ad @item.Hasta?.Soyad
+                    </td>
+                    <td>
+                        @item.Doktor?.Ad @item.Doktor?.Soyad
+                    </td>
+                    <td>
+                        @(item.RandevuTarihi != null ? item.RandevuTarihi.ToString("dd.MM.yyyy HH:mm") : "-")
+                    </td>
+                    <td>
+                        @item.Sikayet
+                    </td>
+                    <td>
+                        <span class="badge bg-info text-dark">@item.Doktor?.UzmanlikAlani</span>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center text-muted py-3">
+                    <i class="bi bi-exclamation-circle me-1"></i> Aranan kriterlere uygun hiçbir randevu kaydı bulunamadı.
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

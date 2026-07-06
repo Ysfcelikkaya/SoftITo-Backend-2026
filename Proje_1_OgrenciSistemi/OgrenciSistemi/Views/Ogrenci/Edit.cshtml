@@ -1,0 +1,54 @@
+﻿@model OgrenciSistemi.Models.Ogrenci
+
+@{
+    ViewData["Title"] = "Öğrenci Düzenle";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-warning text-dark">
+                    <h4 class="mb-0">Öğrenci Bilgilerini Güncelle</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit" method="post">
+
+                        <input type="hidden" asp-for="OgrenciNo" />
+
+                        <div class="mb-3">
+                            <label asp-for="OgrenciAdi" class="form-label">Öğrenci Adı</label>
+                            <input asp-for="OgrenciAdi" class="form-control" required />
+                            <span asp-validation-for="OgrenciAdi" class="text-danger"></span>
+                        </div>
+
+                        @* <div class="mb-3">
+                            <label asp-for="OgrenciSoyadi" class="form-label">Öğrenci Soyadı</label>
+                            <input asp-for="OgrenciSoyadi" class="form-control" required />
+                        </div>
+                        *@
+
+                        <div class="mb-3">
+                            <label asp-for="BolumNo" class="form-label">Kayıtlı Olduğu Bölüm</label>
+                            <select asp-for="BolumNo" class="form-select" asp-items="ViewBag.BolumNo" required>
+                                <option value="">-- Bölüm Seçiniz --</option>
+                            </select>
+                            <span asp-validation-for="BolumNo" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="submit" class="btn btn-warning fw-bold text-dark">Değişiklikleri Kaydet</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary">Listeye Geri Dön</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

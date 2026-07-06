@@ -1,0 +1,51 @@
+﻿@model DbFirstProject.Models.Randevu
+@{
+    ViewData["Title"] = "Randevu Sil";
+}
+
+<div class="container-fluid mt-4">
+    <div class="card shadow mb-4" style="max-width: 500px; margin: 0 auto;">
+        <div class="card-header py-3 bg-danger text-white">
+            <h5 class="m-0 font-weight-bold"><i class="bi bi-exclamation-triangle-fill"></i> Randevu Silme Onayı</h5>
+        </div>
+        <div class="card-body">
+            <p class="text-muted fw-semibold">Aşağıdaki randevu kaydını silmek istediğinize emin misiniz? Bu işlem geri alınamaz.</p>
+            
+            <hr />
+            
+            <div class="mb-3">
+                <span class="text-muted small d-block">Hasta:</span>
+                <strong class="text-dark">@Model.Hasta?.Ad @Model.Hasta?.Soyad</strong>
+            </div>
+            
+            <div class="mb-3">
+                <span class="text-muted small d-block">Doktor:</span>
+                <strong class="text-dark">@Model.Doktor?.Ad @Model.Doktor?.Soyad</strong>
+            </div>
+            
+            <div class="mb-3">
+                <span class="text-muted small d-block">Randevu Tarihi:</span>
+                <strong class="text-dark">@(Model.RandevuTarihi != null ? Model.RandevuTarihi.ToString("dd.MM.yyyy HH:mm") : "-")</strong>
+            </div>
+
+            <div class="mb-4">
+                <span class="text-muted small d-block">Şikayet:</span>
+                <p class="text-dark mb-0 bg-light p-2 rounded border">@Model.Sikayet</p>
+            </div>
+
+            <hr />
+
+            <form asp-action="Delete" method="post">
+                <input type="hidden" asp-for="Id" />
+                
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary px-4">Vazgeç</a>
+                    <button type="submit" class="btn btn-danger px-4 fw-bold">
+                        <i class="bi bi-trash3-fill"></i> Evet, Kalıcı Olarak Sil
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

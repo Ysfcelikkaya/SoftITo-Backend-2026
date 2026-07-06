@@ -1,0 +1,59 @@
+﻿@model OgrenciSistemi.Models.Ogretmen
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="container-fluid">
+    <h1>Create</h1>
+    <h4>Ogretmen</h4>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <form asp-controller="Ogretmen" asp-action="Create" method="post" novalidate="novalidate">
+                
+                <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                @if (ViewBag.VeritabaniHatasi != null)
+                {
+                    <div class="alert alert-danger">@ViewBag.VeritabaniHatasi</div>
+                }
+
+                <div class="form-group mb-3">
+                    <label asp-for="OgretmenAdi" class="control-label">Öğretmen Adı</label>
+                    <input asp-for="OgretmenAdi" class="form-control" />
+                    <span asp-validation-for="OgretmenAdi" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="OgretmenBrans" class="control-label">Branşı</label>
+                    <input asp-for="OgretmenBrans" class="form-control" />
+                    <span asp-validation-for="OgretmenBrans" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label asp-for="BolumNo" class="control-label">Bölüm Seçin</label>
+                    <select asp-for="BolumNo" class="form-control">
+                        <option value="">-- Bölüm Seçiniz --</option>
+                        @if (ViewBag.Bolumler != null)
+                        {
+                            foreach (var bolum in ViewBag.Bolumler)
+                            {
+                                <option value="@bolum.BolumNo">@bolum.BolumAdi</option>
+                            }
+                        }
+                    </select>
+                    <span asp-validation-for="BolumNo" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Kaydet" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn border">Geri Dön</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

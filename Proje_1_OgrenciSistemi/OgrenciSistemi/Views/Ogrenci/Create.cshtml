@@ -1,0 +1,53 @@
+﻿@model OgrenciSistemi.Models.Ogrenci
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<div class="container-fluid">
+    <h1>Create</h1>
+    <h4>Ogrenci</h4>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <form asp-action="Create" method="post" novalidate="novalidate">
+                
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                @if (ViewBag.VeritabaniHatasi != null)
+                {
+                    <div class="alert alert-danger">@ViewBag.VeritabaniHatasi</div>
+                }
+
+                <div class="form-group mb-3">
+                    <label asp-for="OgrenciAdi" class="control-label">Öğrenci Adı</label>
+                    <input asp-for="OgrenciAdi" class="form-control" />
+                    <span asp-validation-for="OgrenciAdi" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="OgrenciSinif" class="control-label">Sınıfı</label>
+                    <input asp-for="OgrenciSinif" class="form-control" />
+                    <span asp-validation-for="OgrenciSinif" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label asp-for="BolumNo" class="control-label">Bölüm Seçin</label>
+                    <select asp-for="BolumNo" class="form-control" asp-items="ViewBag.BolumNo">
+                        <option value="">-- Bölüm Seçiniz --</option>
+                    </select>
+                    <span asp-validation-for="BolumNo" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                    <a asp-action="Index" class="btn border ms-2">Back to List</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

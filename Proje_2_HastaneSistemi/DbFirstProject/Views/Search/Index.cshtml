@@ -1,0 +1,21 @@
+﻿@model SearchView
+
+<h3>Arama Sonuçları: "@Model.Query"</h3>
+
+<h4>Hastalar</h4>
+@foreach (var item in Model.Hastas)
+{
+    <p>@item.Ad @item.Soyad</p>
+}
+
+<h4>Doktorlar</h4>
+@foreach (var item in Model.Doktors)
+{
+    <p>@item.Ad @item.Soyad</p>
+}
+
+<h4>Randevular</h4>
+@foreach (var item in Model.Randevus)
+{
+    <p>@item.Hasta.Ad - @item.Doktor.Ad - @item.RandevuTarihi</p>
+}

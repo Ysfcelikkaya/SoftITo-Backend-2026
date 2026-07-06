@@ -1,0 +1,35 @@
+﻿@model IEnumerable<DbFirstProject.Models.Doktor>
+<h2>Doktor Sayfası</h2>
+<p>
+	<a asp-action="Create" class="btn btn-primary">Yeni Doktor</a>
+
+</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>@Html.DisplayNameFor(model => model.Ad)</th>
+			<th>@Html.DisplayNameFor(model => model.Soyad)</th>
+			<th>@Html.DisplayNameFor(model => model.UzmanlikAlani)</th>
+			<th>@Html.DisplayNameFor(model => model.Telefon)</th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@Html.DisplayFor(modelItem => item.Ad)</td>
+				<td>@Html.DisplayFor(modelItem => item.Soyad)</td>
+				<td>@Html.DisplayFor(modelItem => item.UzmanlikAlani)</td>
+				<td>@Html.DisplayFor(modelItem => item.Telefon)</td>
+				<td>
+					<a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">Edit</a> |
+					<a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+				</td>
+
+			</tr>
+
+		}
+	</tbody>
+</table>
