@@ -1,0 +1,91 @@
+﻿@* <h2>Register</h2>
+
+<form method="post">
+
+    <input name="FullName" class="form-control" placeholder="Full Name" />
+    <input name="Email" class="form-control" placeholder="Email" />
+    <input name="Phone" class="form-control" placeholder="Phone" />
+    <input name="Password" type="password" class="form-control" placeholder="Password" />
+
+    <button class="btn btn-success mt-2">Register</button>
+
+</form> *@
+
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-5">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-header bg-success text-white text-center">
+                    <h3 class="mb-0">📝 Register</h3>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form method="post">
+
+                        <div class="mb-3">
+                            <label class="form-label">Full Name</label>
+                            <input name="FullName"
+                                   class="form-control"
+                                   placeholder="Enter your full name" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input name="Email"
+                                   type="email"
+                                   class="form-control"
+                                   placeholder="Enter your email" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Phone</label>
+                            <input name="Phone"
+                                   class="form-control"
+                                   placeholder="Enter your phone" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input name="Password"
+                                   type="password"
+                                   class="form-control"
+                                   placeholder="Enter your password" />
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-success w-100">
+                            Register
+                        </button>
+
+                    </form>
+
+                    <hr />
+
+                    <div class="text-center">
+                        <span>Already have an account?</span>
+                        <br />
+                        <a href="/Auth/Login"
+                           class="btn btn-primary mt-2">
+                            Login
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

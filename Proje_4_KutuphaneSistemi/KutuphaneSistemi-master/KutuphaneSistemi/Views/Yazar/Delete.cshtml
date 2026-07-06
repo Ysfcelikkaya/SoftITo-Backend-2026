@@ -1,0 +1,16 @@
+﻿@model Kutuphane.Model.Yazar
+
+<h2>Yazar Sil</h2>
+
+<h4>Bu yazarı silmek istiyor musunuz?</h4>
+
+<div class="alert alert-warning">
+    <strong>@Model.YazarAdi</strong>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="YazarNo" />
+
+    <button type="submit" class="btn btn-danger">Evet Sil</button>
+    <a asp-action="Index" class="btn btn-secondary">İptal</a>
+</form>

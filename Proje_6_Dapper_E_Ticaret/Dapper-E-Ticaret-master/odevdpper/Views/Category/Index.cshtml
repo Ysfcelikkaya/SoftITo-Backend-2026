@@ -1,0 +1,35 @@
+﻿@model IEnumerable<DapperECommerce.Models.Category>
+
+@{
+    ViewData["Title"] = "Category List";
+}
+
+<h2>Category List</h2>
+
+<a class="btn btn-primary" href="/Category/EY">New Category</a>
+
+<br /><br />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CategoryId</td>
+            <td>@item.CategoryName</td>
+            <td>
+                <a class="btn btn-warning" href="/Category/EY/@item.CategoryId">Edit</a>
+                <a class="btn btn-danger" href="/Category/Delete/@item.CategoryId">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

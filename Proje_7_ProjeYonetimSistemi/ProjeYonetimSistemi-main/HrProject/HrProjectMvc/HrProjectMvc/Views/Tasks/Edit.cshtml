@@ -1,0 +1,44 @@
+﻿@model HrProjectMvc.Models.Tasks
+
+@{
+    ViewData["Title"] = "Edit Task";
+}
+
+<h1>Edit Task</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+
+        <form asp-action="Edit">
+
+            <input type="hidden" asp-for="TaskId" />
+
+            <div class="form-group">
+                <label asp-for="TaskTitle"></label>
+                <input asp-for="TaskTitle" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Status"></label>
+                <input asp-for="Status" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ProjectId"></label>
+                <input asp-for="ProjectId" class="form-control" />
+            </div>
+
+            <br />
+
+            <input type="submit" value="Save" class="btn btn-primary" />
+
+        </form>
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

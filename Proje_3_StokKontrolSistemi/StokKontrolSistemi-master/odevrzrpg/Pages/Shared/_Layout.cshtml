@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Stok Paneli</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body {
+        background: #f8fafc;
+        }
+
+        .sidebar {
+        width: 260px;
+        height: 100vh;
+        position: fixed;
+        background: #111827;
+        top: 0;
+        left: 0;
+        padding-top: 20px;
+        }
+
+        .sidebar a {
+        display: block;
+        padding: 12px 20px;
+        color: #cbd5e1;
+        text-decoration: none;
+        transition: 0.2s;
+        }
+
+        .sidebar a:hover {
+        background: #1f2937;
+        color: #fff;
+        }
+
+        .topbar {
+        margin-left: 260px;
+        height: 60px;
+        background: white;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        }
+
+        .content {
+        margin-left: 260px;
+        padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <h4 class="text-white text-center mb-4">📦 STOK PANELİ</h4>
+
+        <a asp-page="/Index">
+            <i class="bi bi-speedometer2"></i> Dashboard
+        </a>
+
+        <a asp-page="/UrunYonetimi/Index">
+            <i class="bi bi-box"></i> Ürün Yönetimi
+        </a>
+
+        <a asp-page="/Musteriler/Index">
+            <i class="bi bi-people"></i> Müşteriler
+        </a>
+
+        <a asp-page="/Satislar/Index">
+            <i class="bi bi-cash-stack"></i> Satışlar
+        </a>
+
+        <hr class="text-white">
+
+        <a href="#">
+            <i class="bi bi-graph-up"></i> Raporlar
+        </a>
+    </div>
+
+    <div class="topbar">
+        <div>
+            <span class="fw-bold">@ViewData["Title"]</span>
+        </div>
+
+        <div>
+            <a asp-page="/Account/Login">
+                <i class="bi bi-person-circle fs-4"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="content">
+        @RenderBody()
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

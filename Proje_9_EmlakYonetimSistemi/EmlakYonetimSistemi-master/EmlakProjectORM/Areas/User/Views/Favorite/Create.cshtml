@@ -1,0 +1,25 @@
+﻿@model EmlakProjectORM.Models.Favorite
+
+<div class="container mt-4">
+    <h2 class="text-primary">Favoriye İlan Ekle</h2>
+    <hr />
+    <form method="post">
+        
+        <div class="mb-3">
+            <label asp-for="AppUserId" class="form-label">Müşteri Seçin (Combobox)</label>
+            <select asp-for="AppUserId" asp-items="ViewBag.Users" class="form-select" required>
+                <option disabled selected>-- Müşteri Seçin --</option>
+            </select>
+        </div>
+        
+        <div class="mb-3">
+            <label asp-for="PropertyId" class="form-label">İlan Seçin (Combobox)</label>
+            <select asp-for="PropertyId" asp-items="ViewBag.Properties" class="form-select" required>
+                <option disabled selected>-- İlan Seçin --</option>
+            </select>
+        </div>
+        
+        <button type="submit" class="btn btn-success">Favorilere Ekle</button>
+        <a asp-controller="Favorite" asp-action="Index" class="btn btn-secondary">Listeye Dön</a>
+    </form>
+</div>

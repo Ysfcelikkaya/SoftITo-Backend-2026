@@ -1,0 +1,27 @@
+﻿@model DapperECommerce.Models.Customer
+
+<h2>Customer Form</h2>
+
+<form method="post">
+
+    <input type="hidden" asp-for="CustomerId" />
+
+    <div>
+        <label>Full Name</label>
+        <input asp-for="FullName" class="form-control" />
+    </div>
+
+    <div>
+        <label>Email</label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+
+    <div>
+        <label>Phone</label>
+        <input asp-for="Phone" class="form-control" />
+    </div>
+
+    <br />
+
+    <button class="btn btn-success">Save</button>
+</form>

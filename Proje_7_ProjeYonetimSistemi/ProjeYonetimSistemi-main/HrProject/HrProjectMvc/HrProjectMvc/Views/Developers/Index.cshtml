@@ -1,0 +1,39 @@
+﻿@model IEnumerable<HrProjectMvc.Models.Developers>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Developer List</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New Developer</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.DeveloperId)</th>
+            <th>@Html.DisplayNameFor(model => model.DeveloperName)</th>
+            <th>@Html.DisplayNameFor(model => model.FoundationDate)</th>
+            <th>@Html.DisplayNameFor(model => model.DeveloperValue)</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+@foreach (var item in Model)
+{
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.DeveloperId)</td>
+            <td>@Html.DisplayFor(modelItem => item.DeveloperName)</td>
+            <td>@Html.DisplayFor(modelItem => item.FoundationDate)</td>
+            <td>@Html.DisplayFor(modelItem => item.DeveloperValue)</td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.DeveloperId }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.DeveloperId }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

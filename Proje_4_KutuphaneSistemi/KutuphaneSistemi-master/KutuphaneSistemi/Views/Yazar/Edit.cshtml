@@ -1,0 +1,17 @@
+﻿@model Kutuphane.Model.Yazar
+
+<h2>Yazar Güncelleme Sayfası</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="YazarNo" />
+
+    <div class="form-group">
+        <label>Yazar Adı</label>
+        <input asp-for="YazarAdi" class="form-control" />
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</form>

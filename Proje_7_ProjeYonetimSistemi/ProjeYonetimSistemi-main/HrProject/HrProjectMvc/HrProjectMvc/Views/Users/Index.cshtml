@@ -1,0 +1,46 @@
+﻿@model List<HrProjectMvc.Models.Users>
+
+<h2>Users List</h2>
+
+<a asp-action="UserRoleReport" class="btn btn-info mb-3">
+    User Role Report
+</a>
+
+<div class="mb-3">
+    <a asp-action="Create" class="btn btn-primary">Yeni Kullanıcı</a>
+
+    <a asp-action="ExportUsersToPdf" class="btn btn-danger">
+        PDF İndir
+    </a>
+
+    <a asp-action="ExportUsersToExcel" class="btn btn-success">
+        Excel İndir
+    </a>
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>UserId</th>
+            <th>UserName</th>
+            <th>Password</th>
+            <th>RoleId</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.UserId</td>
+            <td>@item.UserName</td>
+            <td>@item.Password</td>
+            <td>@item.RoleId</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-warning">Edit</a>
+                <a asp-action="Delete" asp-route-id="@item.UserId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

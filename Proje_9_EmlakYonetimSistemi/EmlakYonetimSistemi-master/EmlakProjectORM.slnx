@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="EmlakProjectORM.Data/EmlakProjectORM.Data.csproj" />
+  <Project Path="EmlakProjectORM.Models/EmlakProjectORM.Models.csproj" />
+  <Project Path="EmlakProjectORM/EmlakProjectORM.csproj" />
+</Solution>

@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <title>Yönetici Paneli</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-danger mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="#">YÖNETİCİ PANELİ</a>
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item"><a class="nav-link text-white" asp-area="Admin" asp-controller="Property" asp-action="Index">İlan Yönetimi</a></li>
+                <li class="nav-item"><a class="nav-link text-white" asp-area="Admin" asp-controller="PropertyType" asp-action="Index">Emlak Tipleri</a></li>
+                <li class="nav-item"><a class="nav-link text-white" asp-area="Admin" asp-controller="Report" asp-action="Index">Raporlar</a>
+                </li>
+            </ul>
+            <a href="/" class="btn btn-outline-light btn-sm">Çıkış Yap</a>
+        </div>
+    </nav>
+    <div class="container">
+        @RenderBody()
+    </div>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

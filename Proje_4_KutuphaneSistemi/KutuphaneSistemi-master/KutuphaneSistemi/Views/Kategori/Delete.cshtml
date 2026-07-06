@@ -1,0 +1,32 @@
+﻿@model Kutuphane.Model.Kategori
+@{
+    ViewData["Title"] = "Delete";
+}
+<h1>Kategori Silme Sayfası</h1>
+<h3>Bu kategoriyi silmek isteiğinize emin misiniz?</h3>
+<div>
+    <h4>Kategoriler</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.KategoriAdi)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.KategoriAdi)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Aciklama)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Aciklama)
+        </dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="KategoriNo" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
+

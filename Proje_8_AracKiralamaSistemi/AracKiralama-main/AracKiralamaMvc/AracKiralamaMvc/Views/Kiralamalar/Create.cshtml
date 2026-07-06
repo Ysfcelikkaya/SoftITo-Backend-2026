@@ -1,0 +1,63 @@
+﻿@model AracKiralamaMvc.Models.Kiralama
+
+@{
+    ViewData["Title"] = "Yeni Kiralama";
+}
+
+<div class="container mt-4">
+    <h2>Yeni Kiralama Kaydı</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create" method="post">
+                <div class="form-group mb-3">
+                    <label class="control-label">Araç Seçiniz</label>
+                    <select name="AracId" id="AracId" class="form-select" required>
+                        <option value="">-- Listeden Araç Seçin --</option>
+                        @if (ViewBag.Araclar != null)
+                        {
+                            foreach (var arac in ViewBag.Araclar)
+                            {
+                                <option value="@arac.Id">@arac.Marka @arac.Model - (@arac.Yil)</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="control-label">Müşteri Seçiniz</label>
+                    <select name="MusteriId" id="MusteriId" class="form-select" required>
+                        <option value="">-- Listeden Müşteri Seçin --</option>
+                        @if (ViewBag.Musteriler != null)
+                        {
+                            foreach (var musteri in ViewBag.Musteriler)
+                            {
+                                <option value="@musteri.Id">@musteri.AdSoyad</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="control-label">Başlangıç Tarihi</label>
+                    <input name="BaslangicTarih" id="BaslangicTarih" class="form-control" type="date"
+                           min="2000-01-01"
+                           value="@DateTime.Now.ToString("yyyy-MM-dd")"
+                           required />
+                </div>
+
+                <div class="form-group mb-4">
+                    <label class="control-label">Bitiş Tarihi</label>
+                    <input name="BitisTarih" id="BitisTarih" class="form-control" type="date"
+                           min="2000-01-01"
+                           value="@DateTime.Now.AddDays(1).ToString("yyyy-MM-dd")"
+                           required />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Kaydet" class="btn btn-success" />
+                    <a asp-action="Index" class="btn btn-secondary ms-2">Listeye Dön</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

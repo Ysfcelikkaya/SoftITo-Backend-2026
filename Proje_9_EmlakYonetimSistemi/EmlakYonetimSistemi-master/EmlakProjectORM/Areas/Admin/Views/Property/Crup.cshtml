@@ -1,0 +1,62 @@
+﻿@model EmlakProjectORM.Models.ViewModels.PropertyVM
+
+<div class="container mt-4">
+    <h2>İlan @(Model.Property.Id <= 0 ? "Ekle" : "Güncelle")</h2>
+    <hr />
+
+    <form method="post" enctype="multipart/form-data">
+        <input asp-for="Property.Id" type="hidden" />
+        <input asp-for="Property.Photo" type="hidden" />
+
+        @if (Model.Property.Photo != null)
+        {
+            <div class="mb-3">
+                <img src="@Model.Property.Photo" width="250" style="border-radius:8px; border:2px solid #ccc;" />
+            </div>
+        }
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label asp-for="Property.Title" class="form-label">İlan Başlığı</label>
+                <input asp-for="Property.Title" class="form-control" placeholder="Örn: Sahibinden Deniz Manzaralı..." required />
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label asp-for="Property.PropertyTypeId" class="form-label">Emlak Tipi</label>
+                <select asp-for="Property.PropertyTypeId" asp-items="@Model.PropertyTypeList" class="form-select" required>
+                    <option disabled selected>-- Lütfen Emlak Tipi Seçin --</option>
+                </select>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label asp-for="Property.Price" class="form-label">Fiyat (₺)</label>
+                <input asp-for="Property.Price" type="number" class="form-control" required />
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label asp-for="Property.Rooms" class="form-label">Oda Sayısı</label>
+                <input asp-for="Property.Rooms" type="number" class="form-control" />
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label asp-for="Property.SquareMeters" class="form-label">Metrekare (m²)</label>
+                <input asp-for="Property.SquareMeters" type="number" class="form-control" />
+            </div>
+
+            <div class="col-12 mb-3">
+                <label asp-for="Property.Description" class="form-label">Açıklama</label>
+                <textarea asp-for="Property.Description" class="form-control" rows="3"></textarea>
+            </div>
+
+            <div class="col-12 mb-3">
+                <label class="form-label">İlan Fotoğrafı Seçin</label>
+                <input type="file" id="file" name="file" accept="image/*" class="form-control" />
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success mt-2">
+            @(Model.Property.Id <= 0 ? "İlanı Kaydet" : "Değişiklikleri Güncelle")
+        </button>
+        <a asp-action="Index" class="btn btn-secondary mt-2 ms-2">Listeye Dön</a>
+    </form>
+</div>

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<OgrenciSistemi.Models.Bolum>
+<p>
+	<a asp-action="Create" class="btn btn-primary">Create New</a>
+
+</p>
+<table class="table">
+
+
+
+	<thead>
+		<tr>
+			<th>@Html.DisplayNameFor(model => model.BolumAdi)</th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@Html.DisplayFor(modelItem => item.BolumAdi)</td>
+				<td>
+					<a asp-action="Edit" asp-route-id="@item.BolumNo" class="btn btn-success">Edit</a>
+					<a asp-action="Delete" asp-route-id="@item.BolumNo" class="btn btn-danger">Delete</a>
+				</td>
+
+			</tr>
+
+
+		}
+	</tbody>
+
+
+
+
+
+
+
+</table>
+

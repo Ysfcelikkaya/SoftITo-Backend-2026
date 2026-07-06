@@ -1,0 +1,33 @@
+﻿@model IEnumerable<EmlakProjectORM.Models.Property>
+
+<div class="text-center mb-4">
+    <h1 class="display-4">Emlak Otomasyonuna Hoş Geldiniz</h1>
+    <p>Hayalinizdeki evi aşağıdan bulabilirsiniz.</p>
+</div>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                @if (item.Photo != null)
+                {
+                    <img src="@item.Photo" class="card-img-top" alt="İlan Resmi" style="height:200px; object-fit:cover;">
+                }
+                else
+                {
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height:200px;">Görsel Yok</div>
+                }
+                <div class="card-body">
+                    <h5 class="card-title">@item.Title</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@item.PropertyType.TypeName</h6>
+                    <p class="card-text text-danger fw-bold">@item.Price ₺</p>
+                    <p class="card-text"><small class="text-muted">@item.Rooms Oda | @item.SquareMeters m²</small></p>
+                </div>
+                <div class="card-footer bg-transparent border-top-0">
+                    <button class="btn btn-outline-primary w-100">Detayları Gör</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>

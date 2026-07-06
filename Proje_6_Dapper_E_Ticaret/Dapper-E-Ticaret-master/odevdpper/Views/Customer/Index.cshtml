@@ -1,0 +1,27 @@
+﻿@model IEnumerable<DapperECommerce.Models.Customer>
+
+<h2>Customer</h2>
+
+<a href="/Customer/EY" class="btn btn-primary">New Customer</a>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.FullName</td>
+            <td>@item.Email</td>
+            <td>@item.Phone</td>
+            <td>
+                <a href="/Customer/EY/@item.CustomerId" class="btn btn-warning">Edit</a>
+                <a href="/Customer/Delete/@item.CustomerId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,39 @@
+﻿@model EmlakProjectORM.Models.Appointment
+
+<div class="container mt-4">
+    <h2 class="text-success fw-bold">📅 Yeni Randevu Oluştur</h2>
+    <hr />
+    <form method="post">
+
+        <div class="mb-3">
+            <label asp-for="AppUserId" class="form-label fw-bold">Müşteri Seçin</label>
+            <select asp-for="AppUserId" asp-items="ViewBag.Users" class="form-select" required>
+                <option disabled selected>-- Müşteri Seçin --</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="PropertyId" class="form-label fw-bold">İlan Seçin</label>
+            <select asp-for="PropertyId" asp-items="ViewBag.Properties" class="form-select" required>
+                <option disabled selected>-- İlan Seçin --</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="AppointmentDate" class="form-label fw-bold">Randevu Tarihi ve Saati</label>
+            <input asp-for="AppointmentDate" type="datetime-local" class="form-control" required />
+        </div>
+
+        <div class="mb-4">
+            <label asp-for="Status" class="form-label fw-bold">Randevu Durumu</label>
+            <select asp-for="Status" class="form-select" required>
+                <option value="Bekliyor" selected>Bekliyor</option>
+                <option value="Onaylandı">Onaylandı</option>
+                <option value="İptal Edildi">İptal Edildi</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success btn-lg w-100 fw-bold">Randevuyu Kaydet</button>
+        <a asp-controller="Appointment" asp-action="Index" class="btn btn-outline-secondary w-100 mt-2">Listeye Dön</a>
+    </form>
+</div>

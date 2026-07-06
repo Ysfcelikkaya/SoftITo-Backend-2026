@@ -1,0 +1,79 @@
+﻿@model AracKiralamaMvc.Models.Odeme
+
+@{
+    ViewData["Title"] = "Yeni Ödeme";
+}
+
+<div class="container mt-4">
+    <h2>Yeni Ödeme Al</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create" method="post">
+                <div class="form-group mb-3">
+                    <label class="control-label">Ödemesi Yapılacak Kiralama</label>
+                    <select name="KiralamaId" id="KiralamaId" class="form-select" required onchange="hesapla()">
+                        <option value="">-- Kiralama İşlemini Seçin --</option>
+                        @if (ViewBag.Kiralamalar != null)
+                        {
+                            foreach (var k in ViewBag.Kiralamalar)
+                            {
+                                <option value="@k.Id">@k.AdSoyad - @k.Marka @k.Model (@k.BaslangicTarih.ToShortDateString() - @k.BitisTarih.ToShortDateString())</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="control-label">Toplam Tutar (₺) - Otomatik Hesaplanır</label>
+                    <!-- readonly ekledik ki müşteri elle değiştiremesin -->
+                    <input name="Tutar" id="Tutar" class="form-control fw-bold text-success" type="number" step="0.01" readonly required />
+                </div>
+
+                <div class="form-group mb-4">
+                    <label class="control-label">Ödeme Tarihi</label>
+                    <input name="OdemeTarihi" class="form-control" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" required />
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Ödemeyi Kaydet" class="btn btn-success" />
+                    <a asp-action="Index" class="btn btn-secondary ms-2">Listeye Dön</a>
+                </div>
+            </form>
+
+            <!-- BÜYÜNÜN GERÇEKLEŞTİĞİ YER: Otomatik Tutar Hesaplayan JavaScript -->
+            <script>
+                            var fiyatListesi = {};
+
+                            @if (ViewBag.Kiralamalar != null && ViewBag.Araclar != null)
+                            {
+                                        foreach (var k in ViewBag.Kiralamalar)
+                                        {
+                                                    var arac = ((IEnumerable<AracKiralamaMvc.Models.Arac>)ViewBag.Araclar).FirstOrDefault(a => a.Id == k.AracId);
+                                                    if (arac != null)
+                                                    {
+                                                                // Gün sayısını hesapla (Aynı gün bile olsa en az 1 günlük ücret say)
+                                                                var gunSayisi = (k.BitisTarih.Date - k.BaslangicTarih.Date).Days;
+                                                                if (gunSayisi <= 0) gunSayisi = 1;
+
+                                                                var toplamTutar = gunSayisi * arac.GunlukUcret;
+                                                                // Listeye Ekle
+                                                                @:fiyatListesi[@k.Id] = "@toplamTutar.ToString(System.Globalization.CultureInfo.InvariantCulture)";
+                                                    }
+                                        }
+                            }
+
+                            function hesapla() {
+                                var secilenId = document.getElementById("KiralamaId").value;
+                                var tutarInput = document.getElementById("Tutar");
+
+                                if(secilenId && fiyatListesi[secilenId]) {
+                                    tutarInput.value = fiyatListesi[secilenId]; // Fiyatı kutuya fırlat!
+                                } else {
+                                    tutarInput.value = ""; // Seçim temizlendiyse kutuyu boşalt
+                                }
+                            }
+            </script>
+        </div>
+    </div>
+</div>

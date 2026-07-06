@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Rezervasyon Yönetimi";
+}
+
+<div class="container mt-4">
+    <h2>Rezervasyon Yönetim Paneli (Admin)</h2>
+    <hr />
+    
+    <button type="button" class="btn btn-success mb-3" id="btnAddReservation">
+        + Yeni Rezervasyon Yap
+    </button>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Oda No</th>
+                <th>Müşteri</th>
+                <th>Giriş Tarihi</th>
+                <th>Çıkış Tarihi</th>
+                <th>Toplam Tutar</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody id="table_data">
+            </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="ReservationModal" tabindex="-1" role="dialog" aria-labelledby="resHeading" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resHeading">Rezervasyon İşlemleri</h5>
+                <button type="button" class="close" onclick="HideModalPopUp()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="ReservationId" />
+
+                    <div class="form-group mb-2">
+                        <label for="RoomId">Oda Seçimi</label>
+                        <select class="form-control" id="RoomId">
+                            </select>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="UserId">Müşteri Seçimi</label>
+                        <select class="form-control" id="UserId">
+                            </select>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="CheckInDate">Giriş Tarihi</label>
+                        <input type="date" class="form-control" id="CheckInDate" />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="CheckOutDate">Çıkış Tarihi</label>
+                        <input type="date" class="form-control" id="CheckOutDate" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="AddReservationBtn" onclick="AddReservation()">Rezervasyon Yap</button>
+                <button type="button" class="btn btn-primary" id="btnUpdate" onclick="UpdateReservation()" style="display:none;">Güncelle</button>
+                <button type="button" class="btn btn-secondary" onclick="HideModalPopUp()">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/reservation.js"></script>
+}

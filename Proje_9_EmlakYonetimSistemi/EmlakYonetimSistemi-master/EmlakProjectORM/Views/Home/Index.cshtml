@@ -1,0 +1,85 @@
+﻿@* @{
+    ViewData["Title"] = "Giriş Seçimi";
+}
+
+<div class="container text-center mt-5">
+    <h1 class="display-4 fw-bold text-dark mb-3">Emlak Otomasyonuna Hoş Geldiniz</h1>
+    <p class="lead text-muted mb-5">Lütfen devam etmek istediğiniz paneli seçin.</p>
+
+    <div class="row justify-content-center">
+        <!-- Admin Giriş Kartı -->
+        <div class="col-md-4">
+            <div class="card shadow-lg p-4 mb-4 border-danger border-top border-4">
+                <div class="card-body">
+                    <h3 class="card-title text-danger">Yönetici</h3>
+                    <p class="card-text mt-3 mb-4">İlan eklemek, güncellemek ve sistemi yönetmek için admin girişi yapın.</p>
+                    <!-- Bu buton bizi Admin klasöründeki Login sayfasına atacak -->
+                    <a href="/Admin/Login/Index" class="btn btn-danger btn-lg w-100">Admin Girişi Yap</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Müşteri (User) Giriş Kartı -->
+        <div class="col-md-4">
+            <div class="card shadow-lg p-4 mb-4 border-primary border-top border-4">
+                <div class="card-body">
+                    <h3 class="card-title text-primary">Müşteri</h3>
+                    <p class="card-text mt-3 mb-4">İlanları görmek, favoriye eklemek ve randevu oluşturmak için giriş yapın.</p>
+                    <!-- Bu buton bizi User klasöründeki Login sayfasına atacak -->
+                    <a href="/User/Login/Index" class="btn btn-primary btn-lg w-100">Müşteri Girişi Yap</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> *@
+
+
+@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<div class="d-flex align-items-center justify-content-center" style="min-height: 80vh; background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); border-radius: 20px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+    <div class="text-center w-100">
+
+        <h1 class="display-3 fw-bold text-dark mb-3" style="letter-spacing: -1px;">Emlak <span class="text-primary">Otomasyonu</span></h1>
+        <p class="lead text-muted mb-5 fs-4">Lütfen işlem yapmak istediğiniz paneli seçerek devam edin.</p>
+
+        <div class="row justify-content-center g-4">
+
+            <div class="col-md-5 col-lg-4">
+                <div class="card h-100 shadow border-0" style="border-radius: 20px; transition: transform 0.3s ease;">
+                    <div class="card-body p-5">
+                        <div class="mb-4">
+                            <span style="font-size: 4rem;">🛡️</span>
+                        </div>
+                        <h3 class="card-title fw-bold text-dark mb-3">Yönetici Paneli</h3>
+                        <p class="card-text text-muted mb-4">Sistemi yönetmek, ilanları onaylamak ve emlak tiplerini düzenlemek için admin girişi yapın.</p>
+                        <a href="/Admin/Login/Index" class="btn btn-dark btn-lg w-100 rounded-pill shadow-sm fw-bold">Admin Girişi Yap</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-5 col-lg-4">
+                <div class="card h-100 shadow border-0" style="border-radius: 20px; transition: transform 0.3s ease;">
+                    <div class="card-body p-5">
+                        <div class="mb-4">
+                            <span style="font-size: 4rem;">🏠</span>
+                        </div>
+                        <h3 class="card-title fw-bold text-primary mb-3">Müşteri Paneli</h3>
+                        <p class="card-text text-muted mb-4">Yeni ilanları keşfetmek, favorilerinize eklemek ve evler için randevu oluşturmak için giriş yapın.</p>
+                        <a href="/User/Login/Index" class="btn btn-primary btn-lg w-100 rounded-pill shadow-sm fw-bold">Müşteri Girişi Yap</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .card:hover {
+        transform: translateY(-15px) !important;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.12) !important;
+        cursor: pointer;
+    }
+</style>

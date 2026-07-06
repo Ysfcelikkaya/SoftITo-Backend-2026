@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Kutuphane.Model.viewModel.kitkatlistview>
+@{
+    ViewData["Title"] = "Aynı Sayıdaki Kitaplar";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">📚 Gelişmiş Kütüphane Raporlama Modülü</h2>
+    <hr />
+
+    <div class="d-flex justify-content-center gap-2 mb-4 flex-wrap">
+        <a asp-controller="Report" asp-action="Index" class="btn btn-outline-secondary">Standart Rapor</a>
+        <a asp-controller="Report" asp-action="RaporInnerJoin" class="btn btn-outline-primary">Inner Join</a>
+        <a asp-controller="Report" asp-action="RaporLeftJoin" class="btn btn-outline-warning text-dark">Left Join</a>
+        <a asp-controller="Report" asp-action="RaporGroupBy" class="btn btn-outline-info">Group By</a>
+        <a asp-controller="Report" asp-action="RaporFullJoin" class="btn btn-outline-danger">Full Join</a>
+        <a asp-controller="Report" asp-action="RaporAyniKitapSayisi" class="btn btn-dark shadow">Aynı Sayıdakiler (Özel)</a>
+    </div>
+
+    <div class="card shadow-sm border-dark">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Kitap Sayısı (Adedi/Sayfası) Aynı Olan Eserler</h5>
+            <span class="badge bg-danger">Filtre Aktif</span>
+        </div>
+        <div class="card-body p-0">
+            <table class="table table-bordered table-striped table-hover mb-0">
+                <thead class="table-secondary">
+                    <tr>
+                        <th>Kitap Sayısı / Adedi</th>
+                        <th>Kitap Adı</th>
+                        <th>Yazar Adı</th>
+                        <th>Kategori Adı</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td><span class="badge bg-primary fs-6">@item.KitapSayisi</span></td>
+                                <td><strong>@item.KitapAdi</strong></td>
+                                <td>@item.YazarAdi</td>
+                                <td>@item.KategoriAdi</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="4" class="text-center text-muted py-4">
+                                Veritabanında kitap sayısı birbiriyle aynı olan (çakışan) hiçbir kitap bulunamadı.
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

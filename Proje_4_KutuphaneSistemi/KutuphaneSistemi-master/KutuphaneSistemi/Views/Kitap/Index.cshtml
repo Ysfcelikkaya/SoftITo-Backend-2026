@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Kutuphane.Model.Kitap>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Kitap Listesi</h1>
+
+<div class="row mb-3 align-items-center">
+    <div class="col-md-4">
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+    </div>
+    <div class="mb-3">
+        <a asp-controller="Kitap" asp-action="ExportToPdf" class="btn btn-danger">
+            <i class="fa fa-file-pdf"></i> PDF Olarak İndir
+        </a>
+        <a asp-controller="Kitap" asp-action="ExportToExcel" class="btn btn-success">
+            <i class="fa fa-file-excel"></i> Excel Olarak İndir
+        </a>
+    </div>
+    <div class="col-md-8">
+        <form asp-action="Index" method="get" class="d-flex justify-content-end">
+            <div class="input-group style="max-width: 400px;">
+                <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control" placeholder="Kitap adı ara..." />
+                <button type="submit" class="btn btn-outline-secondary">
+                    Ara
+                </button>
+                @if (!string.IsNullOrEmpty(ViewData["CurrentFilter"] as string))
+                {
+                    <a asp-action="Index" class="btn btn-outline-danger">Temizle</a>
+                }
+            </div>
+        </form>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.KitapAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KitapSayisi)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KitapAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KitapSayisi)
+                </td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Kategori İşlemleri">
+                        <a asp-action="Edit" asp-route-id="@item.KitapNo" class="btn btn-sm btn-primary d-inline-flex align-items-center me-1">
+                            <i class="bi bi-pencil-square me-1"></i> Edit
+                        </a>
+
+                        <a asp-action="Delete" asp-route-id="@item.KitapNo" class="btn btn-sm btn-danger d-inline-flex align-items-center">
+                            <i class="bi bi-trash me-1"></i> Delete
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

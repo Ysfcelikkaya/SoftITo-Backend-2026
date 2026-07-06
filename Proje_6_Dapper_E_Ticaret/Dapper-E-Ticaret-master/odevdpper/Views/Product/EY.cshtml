@@ -1,0 +1,39 @@
+﻿@model DapperECommerce.Models.Product
+
+@{
+    ViewData["Title"] = "Product Form";
+}
+
+<h2>Product Form</h2>
+
+<form method="post" asp-action="EY">
+
+    <input type="hidden" asp-for="ProductId" />
+
+    <div>
+        <label>Product Name</label>
+        <input asp-for="ProductName" class="form-control" />
+    </div>
+
+    <div>
+        <label>Price</label>
+        <input asp-for="Price" class="form-control" />
+    </div>
+
+    <div>
+        <label>Stock</label>
+        <input asp-for="Stock" class="form-control" />
+    </div>
+
+    <div>
+        <label>Category</label>
+        <select asp-for="CategoryId" class="form-control"
+                asp-items="@(new SelectList(ViewBag.categories, "CategoryId", "CategoryName"))">
+        </select>
+    </div>
+
+    <br />
+
+    <button class="btn btn-success">Save</button>
+
+</form>

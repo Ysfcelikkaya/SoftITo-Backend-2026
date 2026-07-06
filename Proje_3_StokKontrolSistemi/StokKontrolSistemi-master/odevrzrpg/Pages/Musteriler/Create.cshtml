@@ -1,0 +1,55 @@
+﻿@page
+@model odevrzrpg.Pages.Musteriler.CreateModel
+@{
+    ViewData["Title"] = "Yeni Müşteri Ekle";
+}
+
+<div class="container mt-4" style="max-width: 600px;">
+    <h2>Yeni Müşteri Kaydı</h2>
+
+    @if (Model.errorMessage.Length > 0)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Hata:</strong> @Model.errorMessage
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (Model.successMessage.Length > 0)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Başarılı!</strong> @Model.successMessage
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <form method="POST">
+        <div class="mb-3">
+            <label class="form-label">Müşteri Adı Soyadı</label>
+            <input type="text" class="form-control" name="AdSoyad" value="@Model.musteribilgi.AdSoyad">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Telefon Numarası</label>
+            <input type="text" class="form-control" name="Telefon" value="@Model.musteribilgi.Telefon">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">E-posta Adresi</label>
+            <input type="email" class="form-control" name="Eposta" value="@Model.musteribilgi.Eposta">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Şehir</label>
+            <input type="text" class="form-control" name="Sehir" value="@Model.musteribilgi.Sehir">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Başlangıç Bakiyesi (TL)</label>
+            <input type="number" step="0.01" class="form-control" name="Bakiye" value="@Model.musteribilgi.Bakiye">
+        </div>
+
+        <button type="submit" class="btn btn-success">Müşteriyi Kaydet</button>
+        <a class="btn btn-outline-secondary" href="/Musteriler/Index">İptal</a>
+    </form>
+</div>

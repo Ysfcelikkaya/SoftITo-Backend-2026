@@ -1,0 +1,73 @@
+﻿@model IEnumerable<EmlakProjectORM.Models.Property>
+
+<div class="container mt-4">
+    <h2 class="text-primary fw-bold mb-4">📈 Gelişmiş İlan Raporlama</h2>
+    
+    <div class="card shadow-sm border-0 mb-4" style="border-left: 5px solid #0d6efd;">
+        <div class="card-body bg-light">
+            <form method="post" class="row g-3 align-items-end">
+                <div class="col-md-2">
+                    <label class="form-label fw-bold text-secondary">Emlak Tipi</label>
+                    <select name="propertyTypeId" asp-items="ViewBag.PropertyTypes" class="form-select">
+                        <option value="">-- Tüm Tipler --</option>
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <label class="form-label fw-bold text-secondary">Minimum Fiyat</label>
+                    <input type="number" name="minPrice" class="form-control" placeholder="Örn: 1000000" />
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label fw-bold text-secondary">Maksimum Fiyat</label>
+                    <input type="number" name="maxPrice" class="form-control" placeholder="Örn: 5000000" />
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label fw-bold text-secondary">Sıralama Ölçütü</label>
+                    <select name="sortOrder" class="form-select">
+                        <option value="">-- Varsayılan --</option>
+                        <option value="price_desc">En Yüksek Fiyat</option>
+                        <option value="price_asc">En Düşük Fiyat</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary w-100 fw-bold">🔍 Raporla (Filtrele)</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="alert alert-success fw-bold">
+            Belirlediğiniz kriterlere uygun toplam @Model.Count() adet ilan raporlanmıştır.
+        </div>
+        
+        <table class="table table-bordered table-striped shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>İlan Başlığı</th>
+                    <th>Emlak Tipi</th>
+                    <th>Oda Sayısı</th>
+                    <th>Fiyat (₺)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="fw-bold">@item.Title</td>
+                        <td>@(item.PropertyType != null ? item.PropertyType.TypeName : "-")</td>
+                        <td>@item.Rooms</td>
+                        <td class="text-success fw-bold">@item.Price ₺</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else if (Model != null && !Model.Any())
+    {
+        <div class="alert alert-warning fw-bold text-center">
+            ⚠️ Bu fiyat aralığına uygun hiçbir ilan bulunamadı! Lütfen aralığı genişletin.
+        </div>
+    }
+</div>

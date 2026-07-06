@@ -1,0 +1,46 @@
+﻿@model IEnumerable<DapperECommerce.Models.Order>
+
+<h2>Orders</h2>
+
+<a href="/Order/EY" class="btn btn-primary">New Order</a>
+<div class="mb-3">
+
+    <a asp-controller="Report"
+       asp-action="ExportToPdf"
+       class="btn btn-danger">
+        PDF Download
+    </a>
+
+    <a asp-controller="Report"
+       asp-action="ExportToExcel"
+       class="btn btn-success">
+        Excel Download
+    </a>
+
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FullName</td>
+                <td>@item.ProductName</td>
+                <td>@item.Quantity</td>
+                <td>@item.OrderDate</td>
+                <td>
+                    <a href="/Order/Delete/@item.OrderId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

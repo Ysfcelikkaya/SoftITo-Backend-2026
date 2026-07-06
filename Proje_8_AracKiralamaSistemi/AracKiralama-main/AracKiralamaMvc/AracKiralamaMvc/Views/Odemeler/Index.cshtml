@@ -1,0 +1,38 @@
+﻿@model IEnumerable<AracKiralamaMvc.Models.Odeme>
+
+@{
+    ViewData["Title"] = "Ödeme Listesi";
+}
+
+<div class="container mt-4">
+    <h2>Ödeme Listesi</h2>
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Yeni Ödeme Al</a>
+    </p>
+
+    <table class="table table-bordered table-striped mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th>Müşteri Adı</th>
+                <th>Araç Bilgisi</th>
+                <th>Tutar (₺)</th>
+                <th>Ödeme Tarihi</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="fw-bold">@item.MusteriAdi</td>
+                    <td>@item.AracBilgisi</td>
+                    <td class="text-success fw-bold">₺ @item.Tutar</td>
+                    <td>@item.OdemeTarihi.ToShortDateString()</td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Sil</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

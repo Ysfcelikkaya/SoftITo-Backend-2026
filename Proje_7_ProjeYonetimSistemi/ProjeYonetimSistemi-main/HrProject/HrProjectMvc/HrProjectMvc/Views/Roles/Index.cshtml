@@ -1,0 +1,31 @@
+﻿@model List<HrProjectMvc.Models.Roles>
+
+<h2>Roles List</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Role</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>RoleId</th>
+            <th>RoleName</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.RoleId</td>
+                <td>@item.RoleName</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.RoleId" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.RoleId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

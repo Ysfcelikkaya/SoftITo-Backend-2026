@@ -1,0 +1,26 @@
+﻿@model HrProjectMvc.Models.Users
+
+<h2>Register</h2>
+
+<form asp-action="Register" method="post">
+
+    <input asp-for="UserName" class="form-control" placeholder="Username" />
+    <br />
+
+    <input asp-for="Password" class="form-control" placeholder="Password" />
+    <br />
+
+    <select asp-for="RoleId" class="form-control">
+
+        @foreach (var role in ViewBag.Roles)
+        {
+            <option value="@role.RoleId">@role.RoleName</option>
+        }
+
+    </select>
+
+    <br />
+
+    <button class="btn btn-success">Register</button>
+
+</form>

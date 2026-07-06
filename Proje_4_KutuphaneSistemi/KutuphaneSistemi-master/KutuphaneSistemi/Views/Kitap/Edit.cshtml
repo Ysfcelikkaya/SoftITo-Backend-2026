@@ -1,0 +1,46 @@
+﻿@model Kutuphane.Model.Kitap
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Kitap Güncelleme Sayfası</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <input type="hidden" asp-for="KitapNo" />
+
+            <div class="form-group mb-3">
+                <label asp-for="KitapAdi" class="control-label"></label>
+                <input asp-for="KitapAdi" class="form-control" />
+                <span asp-validation-for="KitapAdi" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="KitapSayisi" class="control-label"></label>
+                <input asp-for="KitapSayisi" class="form-control" />
+                <span asp-validation-for="KitapSayisi" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="KategoriNo" class="control-label">Kategori</label>
+                <select asp-for="KategoriNo" class="form-control" asp-items="ViewBag.KategoriNo"></select>
+                <span asp-validation-for="KategoriNo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="YazarNo" class="control-label">Yazar</label>
+                <select asp-for="YazarNo" class="form-control" asp-items="ViewBag.YazarNo"></select>
+                <span asp-validation-for="YazarNo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>

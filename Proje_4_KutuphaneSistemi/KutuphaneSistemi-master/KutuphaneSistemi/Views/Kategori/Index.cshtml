@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Kutuphane.Model.Kategori>
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Kategori Listesi</h1>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="mb-3">
+    <a asp-controller="Kategori" asp-action="ExportToPdf" class="btn btn-danger">
+        <i class="fa fa-file-pdf"></i> PDF Olarak İndir
+    </a>
+    <a asp-controller="Kategori" asp-action="ExportToExcel" class="btn btn-success">
+        <i class="fa fa-file-excel"></i> Excel Olarak İndir
+    </a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.KategoriAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aciklama)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KategoriAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aciklama)
+                </td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Kategori İşlemleri">
+                        <a asp-action="Edit" asp-route-id="@item.KategoriNo" class="btn btn-sm btn-primary d-inline-flex align-items-center me-1">
+                            <i class="bi bi-pencil-square me-1"></i> Edit
+                        </a>
+
+                        <a asp-action="Delete" asp-route-id="@item.KategoriNo" class="btn btn-sm btn-danger d-inline-flex align-items-center">
+                            <i class="bi bi-trash me-1"></i> Delete
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            }
+            </tbody>
+            </table>
+        

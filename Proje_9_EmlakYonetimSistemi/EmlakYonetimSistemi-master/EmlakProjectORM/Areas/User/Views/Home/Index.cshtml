@@ -1,0 +1,84 @@
+﻿@model IEnumerable<EmlakProjectORM.Models.Property>
+
+<div class="text-center mb-4">
+    <h2 class="display-5 text-primary fw-bold">Emlak Vitrini</h2>
+    <p class="text-muted">Hayalinizdeki evi aşağıdan bulabilirsiniz.</p>
+</div>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                @if (item.Photo != null)
+                {
+                    <img src="@item.Photo" class="card-img-top" alt="İlan Resmi" style="height:250px; object-fit:cover; border-radius: 10px 10px 0 0;">
+                }
+                else
+                {
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center text-muted" style="height:250px;">Görsel Yok</div>
+                }
+                <div class="card-body">
+                    <h5 class="card-title text-dark fw-bold">@item.Title</h5>
+                    <h6 class="card-subtitle mb-3 text-secondary">@(item.PropertyType != null ? item.PropertyType.TypeName : "Tip Belirtilmemiş")</h6>
+
+                    <h4 class="card-text text-success fw-bold mb-3">@item.Price ₺</h4>
+                    <p class="card-text"><small class="text-muted">🛏️ @item.Rooms Oda | 📐 @item.SquareMeters m²</small></p>
+                </div>
+                <div class="card-footer bg-white border-0 text-center">
+                    <a asp-controller="Favorite" asp-action="Create" class="btn btn-outline-danger w-100 mb-2">❤️ Favoriye Ekle</a>
+                    <a asp-controller="Appointment" asp-action="Create" class="btn btn-outline-primary w-100 mb-2">📅 Randevu Al</a>
+
+                    <button class="btn btn-outline-dark w-100" data-bs-toggle="modal" data-bs-target="#qrModal" onclick="loadQrCode(@item.Id)">
+                        <i class="fa fa-qrcode"></i> 📱 QR Kodu Göster
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="modal fade" id="qrModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content text-center">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title">İlan Karekodu</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-4">
+                <p class="text-muted small mb-3">Bu kodu telefon kameranıza okutarak ilanı cebinize indirebilirsiniz.</p>
+
+                <div id="qrLoading" class="text-primary fw-bold">Karekod oluşturuluyor...</div>
+                <img id="qrImage" src="" class="img-fluid d-none border p-1 rounded shadow-sm" alt="QR Code" style="width:200px; height:200px;" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    function loadQrCode(propertyId) {
+
+    var myModal = new bootstrap.Modal(document.getElementById('qrModal'));
+    myModal.show();
+
+    $('#qrImage').addClass('d-none');
+    $('#qrLoading').removeClass('d-none').text('Oluşturuluyor...');
+
+    var postUrl = '@Url.Action("GenerateQr", "Home", new { Area = "User" })' + '/' + propertyId;
+
+    $.ajax({
+    url: postUrl,
+    type: 'GET',
+    success: function (data) {
+    $('#qrImage').attr('src', data).removeClass('d-none');
+    $('#qrLoading').addClass('d-none');
+    },
+    error: function () {
+    $('#qrLoading').text('Hata! Resim bulunamadı. Lütfen URL yi kontrol et: ' + postUrl);
+    }
+    });
+    }
+</script>

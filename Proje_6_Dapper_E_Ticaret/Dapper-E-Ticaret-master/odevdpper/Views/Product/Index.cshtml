@@ -1,0 +1,45 @@
+﻿@model IEnumerable<DapperECommerce.Models.Product>
+
+<h2>Product List</h2>
+
+<a class="btn btn-primary" href="/Product/EY">New Product</a>
+
+<br />
+<br />
+<form method="get" class="mb-3">
+
+    <input type="text"
+           name="search"
+           class="form-control w-25 d-inline"
+           placeholder="Product name search..." />
+
+    <button class="btn btn-primary">Search</button>
+
+</form>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.Price</td>
+                <td>@item.Stock</td>
+                <td>@item.CategoryName</td>
+                <td>
+                    <a href="/Product/EY/@item.ProductId" class="btn btn-warning">Edit</a>
+                    <a href="/Product/Delete/@item.ProductId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

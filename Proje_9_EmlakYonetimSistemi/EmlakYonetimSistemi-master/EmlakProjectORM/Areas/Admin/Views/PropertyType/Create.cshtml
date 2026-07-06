@@ -1,0 +1,18 @@
+﻿@model EmlakProjectORM.Models.PropertyType
+
+<div class="container mt-4">
+    <h2>Yeni Emlak Tipi Ekle</h2>
+    <hr />
+    <form method="post">
+        <div class="mb-3">
+            <label asp-for="TypeName" class="form-label">Emlak Tipi</label>
+            <input asp-for="TypeName" class="form-control" placeholder="Örn: Satılık Daire, Kiralık Villa" required />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label">Açıklama</label>
+            <input asp-for="Description" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-success">Kaydet</button>
+        <a asp-controller="PropertyType" asp-action="Index" class="btn btn-secondary">Listeye Dön</a>
+    </form>
+</div>

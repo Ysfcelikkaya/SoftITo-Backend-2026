@@ -1,0 +1,64 @@
+﻿@model IEnumerable<OgrenciSistemi.Models.Ogrenci>
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Index</h1>
+<form asp-action="Index" method="get" class="mb-3">
+    <div class="input-group">
+        <input type="text"
+               name="arama"
+               class="form-control"
+               placeholder="Öğrenci adı ara..." />
+
+        <button type="submit" class="btn btn-primary">
+            Ara
+        </button>
+    </div>
+</form>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OgrenciAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OgrenciSinif)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BolumNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bolum)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.OgrenciAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.OgrenciSinif)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.BolumNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.bolum.BolumAdi)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.OgrenciNo">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.OgrenciNo">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.OgrenciNo">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

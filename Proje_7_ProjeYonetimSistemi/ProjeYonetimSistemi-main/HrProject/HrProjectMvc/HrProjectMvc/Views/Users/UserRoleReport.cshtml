@@ -1,0 +1,58 @@
+﻿@model IEnumerable<HrProjectMvc.Models.ViewModels.UserRoleViewModel>
+
+@{
+    ViewData["Title"] = "User Role Report";
+}
+
+<h2>User - Role Report</h2>
+
+<hr />
+
+<form method="get" asp-action="UserRoleReport">
+
+    <div class="mb-3">
+
+        <select name="roleId" class="form-control" onchange="this.form.submit()">
+
+            <option value="">All Roles</option>
+
+            @if (ViewBag.Roles != null)
+            {
+                foreach (var role in ViewBag.Roles)
+                {
+                    <option value="@role.RoleId">
+                        @role.RoleName
+                    </option>
+                }
+            }
+
+        </select>
+
+    </div>
+
+</form>
+
+<hr />
+
+<table class="table table-bordered table-striped">
+
+    <thead class="table-dark">
+        <tr>
+            <th>User ID</th>
+            <th>User Name</th>
+            <th>Role Name</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.UserId</td>
+                <td>@item.UserName</td>
+                <td>@item.RoleName</td>
+            </tr>
+        }
+    </tbody>
+
+</table>

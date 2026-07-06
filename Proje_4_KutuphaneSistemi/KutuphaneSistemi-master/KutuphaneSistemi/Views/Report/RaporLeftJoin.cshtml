@@ -1,0 +1,75 @@
+﻿@model List<Kutuphane.Model.viewModel.kitkatlistview>
+
+@{
+    ViewData["Title"] = "Tüm Kitaplar Raporu (Left Join)";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-success text-white">
+            <h3 class="card-title mb-0">📋 Tüm Kitaplar Genel Raporu (Left Join)</h3>
+        </div>
+        <hr />
+
+        <div class="d-flex justify-content-center gap-2 mb-4 flex-wrap">
+            <a asp-controller="Report" asp-action="Index" class="btn btn-outline-secondary">Standart Rapor</a>
+            <a asp-controller="Report" asp-action="RaporInnerJoin" class="btn btn-outline-primary">Inner Join</a>
+            <a asp-controller="Report" asp-action="RaporLeftJoin" class="btn btn-outline-warning text-dark">Left Join</a>
+            <a asp-controller="Report" asp-action="RaporGroupBy" class="btn btn-outline-info">Group By</a>
+            <a asp-controller="Report" asp-action="RaporFullJoin" class="btn btn-outline-danger">Full Join</a>
+            <a asp-controller="Report" asp-action="RaporAyniKitapSayisi" class="btn btn-dark shadow">Aynı Sayıdakiler (Özel)</a>
+        </div>
+        <div class="card-body">
+            <p class="text-muted">Bu raporda sistemdeki tüm kitaplar listelenir. Kategorisi veya yazarı girilmemiş olanlar özel olarak belirtilir.</p>
+            
+            <table class="table table-striped table-hover table-bordered mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Kitap Adı</th>
+                        <th>Kitap Sayısı</th>
+                        <th>Kategori Adı</th>
+                        <th>Yazar Adı</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="fw-bold">@item.KitapAdi</td>
+                                <td><span class="badge bg-secondary">@item.KitapSayisi Adet</span></td>
+                                <td>
+                                    @if (item.KategoriAdi == "Kategori Tanımsız")
+                                    {
+                                        <span class="text-danger font-monospace">⚠️ @item.KategoriAdi</span>
+                                    }
+                                    else
+                                    {
+                                        <span>@item.KategoriAdi</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (item.YazarAdi == "Bilinmeyen Yazar")
+                                    {
+                                        <span class="text-muted fst-italic">👤 @item.YazarAdi</span>
+                                    }
+                                    else
+                                    {
+                                        <span>@item.YazarAdi</span>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="4" class="text-center text-danger fw-bold">Sistemde kayıtlı kitap bulunamadı.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

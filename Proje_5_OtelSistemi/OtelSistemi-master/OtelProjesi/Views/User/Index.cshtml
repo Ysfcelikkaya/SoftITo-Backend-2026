@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Kullanıcı Yönetimi";
+}
+
+<div class="container mt-4">
+    <h2>Kullanıcı Yönetim Paneli</h2>
+    <hr />
+    
+    <button type="button" class="btn btn-success mb-3" id="btnAddUser">
+        + Yeni Kullanıcı Ekle
+    </button>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Ad Soyad</th>
+                <th>E-posta</th>
+                <th>Telefon</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody id="table_data">
+            </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="UserModal" tabindex="-1" role="dialog" aria-labelledby="userHeading" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="userHeading">Kullanıcı İşlemleri</h5>
+                <button type="button" class="close" onclick="HideModalPopUp()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="UserId" />
+
+                    <div class="form-group mb-2">
+                        <label for="FullName">Adı Soyadı</label>
+                        <input type="text" class="form-control" id="FullName" placeholder="Müşteri Adı Soyadı" />
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="Email">E-posta</label>
+                        <input type="email" class="form-control" id="Email" placeholder="ornek@mail.com" />
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="PhoneNumber">Telefon</label>
+                        <input type="text" class="form-control" id="PhoneNumber" placeholder="0555XXXXXXX" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="AddUserBtn" onclick="AddUser()">Kaydet</button>
+                <button type="button" class="btn btn-primary" id="btnUpdate" onclick="UpdateUser()" style="display:none;">Güncelle</button>
+                <button type="button" class="btn btn-secondary" onclick="HideModalPopUp()">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/user.js"></script>
+}
