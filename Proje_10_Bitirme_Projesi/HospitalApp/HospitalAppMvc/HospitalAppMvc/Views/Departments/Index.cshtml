@@ -1,0 +1,53 @@
+﻿@model IEnumerable<HospitalAppMvc.Models.DepartmentViewModel>
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-dark"><i class="bi bi-building-fill text-info"></i> Poliklinikler</h2>
+
+        <!-- İŞTE BU KESİNLİKLE ÇALIŞACAKTIR -->
+        <a href="/Departments/Create" class="btn btn-primary fw-bold px-4 rounded-pill shadow-sm">
+            + Yeni Poliklinik Ekle
+        </a>
+    </div>
+
+    <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="card-body p-0">
+            <table class="table table-hover mb-0 align-middle">
+                <thead class="text-white" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);">
+                    <tr>
+                        <th class="py-3 px-4">Bölüm Adı</th>
+                        <th class="py-3 px-4">Açıklama</th>
+                        <th class="py-3 px-4 text-end">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white">
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var dept in Model)
+                        {
+                            <tr>
+                                <td class="py-3 px-4 fw-bold text-dark">@dept.Name</td>
+                                <td class="py-3 px-4 text-muted">@dept.Description</td>
+                                <td class="py-3 px-4 text-end">
+                                    <form action="/Departments/Delete/@dept.Id" method="post" class="d-inline">
+                                        <!-- DÜZENLE BUTONU (SİL BUTONUNUN ÜSTÜNE) -->
+                                        <a href="/Departments/Edit/@dept.Id" class="btn btn-sm btn-warning fw-bold rounded-pill px-3 shadow-sm me-2 text-dark">
+                                            ✏️ Düzenle
+                                        </a>
+                                        <button type="submit" class="btn btn-sm btn-danger fw-bold rounded-pill px-3 shadow-sm" onclick="return confirm('Silmek istediğinize emin misiniz?');">
+                                            🗑️ Sil
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr><td colspan="3" class="text-center py-5 text-muted">Poliklinik bulunamadı.</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

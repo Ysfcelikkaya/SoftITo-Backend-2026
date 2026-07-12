@@ -1,0 +1,100 @@
+﻿@model HospitalAppMvc.Models.PatientViewModel
+@{
+    ViewData["Title"] = "Yeni Hasta Ekle";
+}
+
+<style>
+    .glass-form-container {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        border: 1px solid rgba(0,0,0,0.05);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .form-control, .form-select {
+        border-radius: 8px;
+        padding: 12px;
+        transition: all 0.3s;
+    }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #3A8DFF;
+            box-shadow: 0 0 0 0.25rem rgba(58, 141, 255, 0.25);
+        }
+
+    .btn-save {
+        background: linear-gradient(135deg, #1DD1A1, #10AC84);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 12px;
+        font-weight: 600;
+        width: 100%;
+        transition: transform 0.2s;
+    }
+
+        .btn-save:hover {
+            background: linear-gradient(135deg, #10AC84, #1DD1A1);
+            color: white;
+            transform: translateY(-2px);
+        }
+</style>
+
+<div class="container mt-5">
+    <div class="glass-form-container">
+        <h3 class="fw-bold mb-4 text-center" style="color: #2c3e50;">Hastayı Sisteme Kaydet</h3>
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger">@ViewBag.Error</div>
+        }
+
+        <form asp-action="Create" method="post">
+
+            <!-- KULLANICI HESABI SEÇİMİ (ŞIK VERSİYON) -->
+            <div class="mb-4 p-3 bg-light rounded border border-primary shadow-sm">
+                <label class="form-label text-primary fw-bold"><i class="bi bi-person-badge"></i> Bağlı Olduğu Kullanıcı Hesabı</label>
+                <select asp-for="UserId" class="form-select border-primary" asp-items="ViewBag.Users" required>
+                    <option value="">-- Lütfen Muhammed vb. Bir Kullanıcı Hesabı Seçin --</option>
+                </select>
+                <small class="text-muted mt-1 d-block">Eğer hasta listede yoksa, önce "Kullanıcı Yönetimi"nden hesap açın.</small>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label text-muted fw-bold">TC Kimlik Numarası</label>
+                <input type="text" asp-for="IdentityNumber" class="form-control" placeholder="11 Haneli TC Kimlik" required />
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label text-muted fw-bold">Adı</label>
+                    <input type="text" asp-for="FirstName" class="form-control" required />
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label text-muted fw-bold">Soyadı</label>
+                    <input type="text" asp-for="LastName" class="form-control" required />
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label text-muted fw-bold">Kan Grubu</label>
+                <select asp-for="BloodGroup" class="form-select" required>
+                    <option value="">Seçiniz...</option>
+                    <option value="A+">A Rh(+)</option>
+                    <option value="A-">A Rh(-)</option>
+                    <option value="B+">B Rh(+)</option>
+                    <option value="B-">B Rh(-)</option>
+                    <option value="0+">0 Rh(+)</option>
+                    <option value="0-">0 Rh(-)</option>
+                    <option value="AB+">AB Rh(+)</option>
+                    <option value="AB-">AB Rh(-)</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-save shadow-sm">Hasta Profilini Oluştur</button>
+            <a asp-action="Index" class="btn btn-outline-secondary w-100 mt-2">Vazgeç ve Listeye Dön</a>
+        </form>
+    </div>
+</div>

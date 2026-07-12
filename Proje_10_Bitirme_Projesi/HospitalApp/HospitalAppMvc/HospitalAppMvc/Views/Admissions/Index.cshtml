@@ -1,0 +1,78 @@
+﻿@model IEnumerable<HospitalAppMvc.Models.AdmissionViewModel>
+
+<div class="container mt-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-dark"><i class="bi bi-file-medical-fill text-primary me-2"></i> Yatan Hastalar (Yatışlar)</h2>
+
+        @if (User.IsInRole("Admin") || User.IsInRole("Doktor"))
+        {
+            <a asp-controller="Admissions" asp-action="Create" class="btn btn-primary fw-bold px-4 rounded-pill shadow-sm">
+                + Yeni Hasta Yatır
+            </a>
+        }
+    </div>
+
+    <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="card-body p-0">
+            <table class="table table-hover mb-0 align-middle text-center">
+
+                <thead class="text-white" style="background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);">
+                    <tr>
+                        <th class="py-3 px-4">Hasta Adı</th>
+                        <th class="py-3 px-4">Oda No</th>
+                        <th class="py-3 px-4">Yatış Tarihi</th>
+                        <th class="py-3 px-4">Çıkış Tarihi</th>
+                        <th class="py-3 px-4">Durum</th>
+                        <th class="py-3 px-4 text-end">İşlemler</th>
+                    </tr>
+                </thead>
+
+                <tbody class="bg-white">
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var app in Model)
+                        {
+                            <tr>
+                                <td class="py-3 px-4 text-primary fw-bold">@app.PatientName</td>
+                                <td class="py-3 px-4 fw-bold">@app.RoomNumber</td>
+                                <td class="py-3 px-4">@app.AdmissionDate.ToString("dd.MM.yyyy HH:mm")</td>
+                                <td class="py-3 px-4">
+                                    @(app.DischargeDate.HasValue ? app.DischargeDate.Value.ToString("dd.MM.yyyy HH:mm") : "-")
+                                </td>
+                                <td class="py-3 px-4">
+                                    @if (app.IsActive)
+                                    {
+                                        <span class="badge bg-success rounded-pill px-3 py-2">Yatıyor</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary rounded-pill px-3 py-2">Taburcu Edildi</span>
+                                    }
+                                </td>
+
+                                <td class="py-3 px-4 text-end">
+                                    @if ((User.IsInRole("Admin") || User.IsInRole("Doktor")) && app.IsActive)
+                                    {
+                                        <form action="/Admissions/Discharge" method="post" class="d-inline" onsubmit="return confirm('Hastayı taburcu etmek istediğinize emin misiniz? Oda otomatik olarak boşaltılacaktır.');">
+                                            <input type="hidden" name="id" value="@app.Id" />
+                                            <button type="submit" class="btn btn-sm btn-danger fw-bold rounded-pill px-3 shadow-sm">
+                                                <i class="bi bi-box-arrow-right me-1"></i> Taburcu Et
+                                            </button>
+                                        </form>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center py-5 text-muted">Hiç yatış kaydı bulunamadı.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

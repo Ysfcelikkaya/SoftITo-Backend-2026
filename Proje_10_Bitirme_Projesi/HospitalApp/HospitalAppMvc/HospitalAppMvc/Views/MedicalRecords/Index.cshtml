@@ -1,0 +1,85 @@
+﻿@model IEnumerable<HospitalAppMvc.Models.MedicalRecordViewModel>
+
+<div class="container mt-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-dark"><i class="bi bi-file-earmark-medical text-danger me-2"></i> Muayene Raporları</h2>
+
+        <!-- SADECE DOKTOR VE ADMIN YENİ KAYIT GİREBİLİR -->
+        @if (User.IsInRole("Admin") || User.IsInRole("Doktor") || User.IsInRole("Doctor"))
+        {
+            <a asp-controller="MedicalRecords" asp-action="Create" class="btn btn-danger fw-bold px-4 rounded-pill shadow-sm">
+                <i class="bi bi-pen"></i> Yeni Muayene Gir
+            </a>
+        }
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="row">
+            @foreach (var record in Model)
+            {
+                <div class="col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm rounded-4 h-100" style="border-left: 5px solid #0284c7 !important;">
+                        <div class="card-body p-4">
+
+                            <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+                                <div>
+                                    <h5 class="fw-bold mb-0 text-dark">@record.PatientName</h5>
+                                    <small class="text-muted"><i class="bi bi-calendar-event"></i> Rapor: @record.ReportDate.ToString("dd.MM.yyyy") | <span style="font-size: 11px;">(Muayene: @record.RecordDate.ToString("dd.MM.yyyy"))</span></small>
+                                </div>
+                                <div class="text-end">
+                                    <span class="badge bg-light text-dark border px-3 py-2 rounded-pill mb-2 d-block"><i class="bi bi-person-badge"></i> @record.DoctorName</span>
+                                    <!-- İŞTE BEKLENEN PDF BUTONU -->
+                                    <a asp-action="Print" asp-route-id="@record.Id" target="_blank" class="btn btn-sm btn-outline-danger rounded-pill fw-bold" style="font-size: 12px;">
+                                        <i class="bi bi-file-pdf"></i> PDF İndir
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <h6 class="fw-bold text-danger"><i class="bi bi-heart-pulse-fill"></i> Tanı (Teşhis)</h6>
+                                <p class="mb-0 bg-light p-2 rounded">@record.Diagnosis</p>
+                            </div>
+
+                            @if (!string.IsNullOrEmpty(record.LabAndXRayResults))
+                            {
+                                <div class="mb-3">
+                                    <h6 class="fw-bold text-info"><i class="bi bi-activity"></i> Lab. ve Röntgen Sonuçları</h6>
+                                    <p class="mb-0 bg-light p-2 rounded fst-italic">@record.LabAndXRayResults</p>
+                                </div>
+                            }
+
+                            <div class="mb-3">
+                                <h6 class="fw-bold text-primary"><i class="bi bi-capsule"></i> İlaçlar / Reçete</h6>
+                                <p class="mb-0 bg-light p-2 rounded text-primary fw-medium">
+                                    @record.Prescription
+                                    @if (!string.IsNullOrEmpty(record.Medicines))
+                                    {
+                                        <br /><small class="text-muted mt-1 d-block">Ek İlaç Notları: @record.Medicines</small>
+                                    }
+                                </p>
+                            </div>
+
+                            @if (!string.IsNullOrEmpty(record.Notes))
+                            {
+                                <div class="mt-3 pt-3 border-top">
+                                    <h6 class="fw-bold text-secondary"><i class="bi bi-info-circle"></i> Doktor Notu</h6>
+                                    <p class="mb-0 text-muted fst-italic" style="font-size: 14px;">"@record.Notes"</p>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="text-center py-5">
+            <i class="bi bi-folder-x text-muted" style="font-size: 3rem;"></i>
+            <h5 class="text-muted mt-3">Sistemde size ait herhangi bir muayene raporu bulunamadı.</h5>
+        </div>
+    }
+</div>

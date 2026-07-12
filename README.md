@@ -1,6 +1,6 @@
 # SoftITo Backend 2026
 
-Bu repo, SoftITo 2026 eğitim sürecinde geliştirilen 9 adet ASP.NET Core projesini içermektedir. Her proje, bir öncekinin üzerine yeni bir teknoloji veya mimari yaklaşım ekleyerek ilerlemektedir.
+Bu repo, SoftITo 2026 eğitim sürecinde geliştirilen 10 adet ASP.NET Core projesini içermektedir. Her proje, bir öncekinin üzerine yeni bir teknoloji veya mimari yaklaşım ekleyerek ilerlemektedir.
 
 ## Projeler
 
@@ -39,6 +39,10 @@ Araç kiralama platformu. Arka planda Web API hizmetleri çalışırken, ön yü
 ### 🏢 Proje 9 — Emlak Yönetim Sistemi
 **Teknoloji:** ASP.NET Core MVC · N-Katmanlı Mimari · Repository Pattern · Unit of Work · Identity  
 Kapsamlı emlak ilan sistemi. Gelişmiş N-Katmanlı Mimari, Generic Repository Pattern, Unit of Work ve ASP.NET Core Identity kullanılarak endüstri standartlarında inşa edilmiştir.
+
+### 🚀 Proje 10 — Bitirme Projesi (Hastane Yönetim Sistemi)
+**Teknoloji:** ASP.NET Core Web API · ASP.NET Core MVC · EF Core · Dapper · JWT  
+SoftITo 2026 Backend Projeleri (Bitirme Projesi). Çok katmanlı mimariyle geliştirilmiş; arka planda JWT güvenliğine sahip bir RESTful Web API, ön tarafta ise HttpClient ile haberleşen bir MVC istemcisi bulunmaktadır. Performans kritik noktalarda Stored Procedure ve Dapper kullanılmıştır.
 
 ## ⚙️ Gereksinimler
 - [.NET SDK](https://dotnet.microsoft.com/download)

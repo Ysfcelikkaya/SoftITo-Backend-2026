@@ -1,0 +1,33 @@
+﻿@model HospitalAppMvc.Models.DepartmentViewModel
+
+<div class="container mt-5">
+    <div class="card border-0 shadow-lg rounded-4 mx-auto" style="max-width: 500px;">
+        <div class="card-header text-white p-4" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);">
+            <h4 class="mb-0 fw-bold">🏥 Yeni Poliklinik Ekle</h4>
+        </div>
+        <div class="card-body p-4 bg-white">
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger fw-bold">@ViewBag.Error</div>
+            }
+
+            <form asp-action="Create" method="post">
+                <div class="mb-3">
+                    <label class="form-label fw-bold text-muted">Poliklinik Adı</label>
+                    <input type="text" asp-for="Name" class="form-control" required placeholder="Örn: Kardiyoloji" />
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold text-muted">Açıklama</label>
+                    <textarea asp-for="Description" class="form-control" rows="3" placeholder="Poliklinik hakkında kısa bilgi..."></textarea>
+                </div>
+
+                <div class="text-end">
+                    <a asp-action="Index" class="btn btn-light border fw-bold me-2">İptal</a>
+                    <button type="submit" class="btn btn-primary fw-bold px-4">Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

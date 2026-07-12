@@ -1,0 +1,52 @@
+﻿@model HospitalAppMvc.Models.DoctorViewModel
+
+<div class="container mt-5">
+    <div class="card border-0 shadow-lg rounded-4 mx-auto" style="max-width: 600px;">
+        <div class="card-header text-white p-4" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);">
+            <h4 class="mb-0 fw-bold">✏️ Doktoru Düzenle</h4>
+        </div>
+        <div class="card-body p-4 bg-white">
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger fw-bold">@ViewBag.Error</div>
+            }
+
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold text-muted">Adı</label>
+                        <input type="text" asp-for="FirstName" class="form-control" />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold text-muted">Soyadı</label>
+                        <input type="text" asp-for="LastName" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold text-muted">Ünvanı</label>
+                    <input type="text" asp-for="Title" class="form-control" />
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold text-muted">Kullanıcı ID (UserId)</label>
+                        <input type="number" asp-for="UserId" class="form-control" />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold text-muted">Bölüm ID (DepartmentId)</label>
+                        <input type="number" asp-for="DepartmentId" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="mt-4 text-end">
+                    <a asp-action="Index" class="btn btn-light border fw-bold me-2">İptal</a>
+                    <button type="submit" class="btn btn-primary fw-bold px-4">Değişiklikleri Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

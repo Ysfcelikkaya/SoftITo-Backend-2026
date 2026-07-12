@@ -1,0 +1,119 @@
+﻿@model HospitalAppMvc.Models.InvoiceViewModel
+@{
+    Layout = null; // Menüleri ve navbarı gizle, sadece temiz A4 kağıdı kalsın
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <title>Fatura_@Model.Id - HospitalApp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #f8f9fa;
+            }
+
+            .a4-page {
+                width: 210mm;
+                min-height: 297mm;
+                padding: 20mm;
+                margin: 10mm auto;
+                background: white;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            }
+
+            /* DİKKAT: Razor cshtml'de CSS komutları çift @@ ile yazılır! */
+            @@media print {
+                body {
+                    background: white;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                .a4-page {
+                    margin: 0;
+                    box-shadow: none;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                .no-print {
+                    display: none !important;
+                }
+            }
+    </style>
+</head>
+<body onload="window.print()">
+    <!-- Sayfa açılır açılmaz PDF yazdırma ekranını tetikler -->
+
+    <div class="text-center mt-3 no-print">
+        <a href="/Invoices/Index" class="btn btn-secondary">Faturalara Dön</a>
+        <button onclick="window.print()" class="btn btn-success">Tekrar Yazdır / PDF Kaydet</button>
+    </div>
+
+    <div class="a4-page border rounded">
+        <!-- Hastane Anteti -->
+        <div class="row border-bottom pb-4 mb-4 mt-3 px-3">
+            <div class="col-sm-6">
+                <h2 class="fw-bold text-success">HospitalApp <small class="text-muted fs-6">A.Ş.</small></h2>
+                <p class="text-muted mb-0">Sağlığınız, Önceliğimizdir.</p>
+                <small>Merkez Mah. Sağlık Sok. No:1 İstanbul</small>
+            </div>
+            <div class="col-sm-6 text-end">
+                <h1 class="fw-bold text-muted" style="font-size: 3rem;">FATURA</h1>
+                <p class="mb-0">Tarih: <strong>@Model.IssueDate.ToString("dd.MM.yyyy")</strong></p>
+                <p>Fatura No: <strong>#INV-@Model.Id.ToString("D5")</strong></p>
+            </div>
+        </div>
+
+        <!-- Müşteri (Hasta) Bilgisi -->
+        <div class="row mb-5 px-3">
+            <div class="col-sm-6">
+                <h6 class="text-muted fw-bold">SAYIN:</h6>
+                <h4 class="fw-bold">@Model.PatientName</h4>
+            </div>
+            <div class="col-sm-6 text-end">
+                <h6 class="text-muted fw-bold">DURUM:</h6>
+                @if (Model.Status == "Paid")
+                {
+                    <h4 class="text-success fw-bold">TAHSİL EDİLDİ (ÖDENDİ)</h4>
+                }
+                else
+                {
+                    <h4 class="text-danger fw-bold">ÖDENMEDİ</h4>
+                }
+            </div>
+        </div>
+
+        <!-- Fatura Kalemleri (Tablo) -->
+        <div class="px-3">
+            <table class="table table-bordered mb-5">
+                <thead class="table-light">
+                    <tr>
+                        <th>Hizmet Açıklaması</th>
+                        <th class="text-end">Tutar (₺)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="py-3">Poliklinik Muayene ve Tedavi Hizmetleri</td>
+                        <td class="py-3 text-end">@Model.Amount.ToString("N2") ₺</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr class="fw-bold bg-light">
+                        <td class="text-end fs-5">KDV DAHİL GENEL TOPLAM:</td>
+                        <td class="text-end fs-5 text-success">@Model.Amount.ToString("N2") ₺</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="text-center text-muted mt-5 pt-5 border-top mx-3" style="font-size: 12px;">
+            <p>Bizi tercih ettiğiniz için teşekkür eder, acil şifalar dileriz.</p>
+            <p>Bu belge elektronik ortamda yasalara uygun olarak hazırlanmıştır.</p>
+        </div>
+    </div>
+</body>
+</html>

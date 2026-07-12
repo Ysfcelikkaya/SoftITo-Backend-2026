@@ -1,0 +1,90 @@
+@model HospitalAppMvc.Models.AppointmentViewModel
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+<div class="container mt-5">
+    <div class="card border-0 shadow-lg rounded-4 mx-auto" style="max-width: 500px;">
+        <div class="card-header text-white p-4" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
+            <h4 class="mb-0 fw-bold">📅 Yeni Randevu Al</h4>
+        </div>
+        <div class="card-body p-4 bg-white">
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger fw-bold">@ViewBag.Error</div>
+            }
+
+            <form asp-action="Create" method="post">
+                <div class="mb-3">
+                    <label class="form-label fw-bold text-muted">Randevu Tarihi ve Saati</label>
+                    <input type="datetime-local" asp-for="AppointmentDate" class="form-control" required />
+                </div>
+
+                @if (User.IsInRole("Patient"))
+                {
+                    var patientItems = ViewBag.Patients as IEnumerable<SelectListItem>;
+                    if (patientItems != null && patientItems.Any())
+                    {
+                        <div style="display: none;">
+                            <select asp-for="PatientId" class="form-select" required>
+                                @foreach (var pat in patientItems)
+                                {
+                                    <option value="@pat.Value" selected>@pat.Text</option>
+                                }
+                            </select>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning fw-bold">
+                            ⚠️ Randevu alabilmek için Hasta bilgilerinizin sisteme kayıtlı olması gerekmektedir. Hastane yönetimi ile iletişime geçiniz veya profilinizi tamamlayınız.
+                        </div>
+                        <!-- Submit'i engellemek için sahte bir select koymuyoruz veya butonu disable edeceğiz -->
+                        <input type="hidden" name="ProfileMissing" value="true" />
+                    }
+                }
+                else
+                {
+                    <div class="mb-3">
+                        <label class="form-label fw-bold text-muted">Randevu Alınacak Hasta</label>
+                        <select asp-for="PatientId" class="form-select" required>
+                            <option value="">-- Lütfen Hasta Seçin --</option>
+                            @if (ViewBag.Patients != null)
+                            {
+                                foreach (var pat in (IEnumerable<SelectListItem>)ViewBag.Patients)
+                                {
+                                    <option value="@pat.Value">@pat.Text</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                }
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold text-muted">Gitmek İstediğiniz Doktor</label>
+                    <select asp-for="DoctorId" class="form-select" required>
+                        <option value="">-- Lütfen Doktor Seçin --</option>
+                        @if (ViewBag.Doctors != null)
+                        {
+                            foreach (var doc in (IEnumerable<SelectListItem>)ViewBag.Doctors)
+                            {
+                                <option value="@doc.Value">@doc.Text</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="text-end">
+                    <a asp-action="Index" class="btn btn-light border fw-bold me-2">İptal</a>
+                    @if (User.IsInRole("Patient") && (ViewBag.Patients as IEnumerable<SelectListItem>)?.Any() != true)
+                    {
+                        <button type="submit" class="btn btn-success fw-bold px-4" disabled>Randevuyu Onayla</button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-success fw-bold px-4">Randevuyu Onayla</button>
+                    }
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

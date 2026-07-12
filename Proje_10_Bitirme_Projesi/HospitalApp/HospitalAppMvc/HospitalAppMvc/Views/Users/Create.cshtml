@@ -1,0 +1,41 @@
+﻿@model HospitalAppMvc.Models.UserViewModel
+
+<div class="container mt-5">
+    <div class="card border-0 shadow-lg rounded-4 mx-auto" style="max-width: 500px;">
+        <div class="card-header bg-secondary text-white p-4">
+            <h4 class="mb-0 fw-bold"><i class="bi bi-person-plus-fill me-2"></i> Yeni Kullanıcı Kaydı</h4>
+        </div>
+        <div class="card-body p-4 bg-white">
+            <form asp-action="Create" method="post">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Kullanıcı Adı</label>
+                    <input asp-for="Username" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold">E-Posta Adresi</label>
+                    <input asp-for="Email" type="email" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold text-danger">Geçici Şifre</label>
+                    <input asp-for="PasswordHash" type="text" class="form-control" placeholder="Örn: 12345" required />
+                </div>
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Kullanıcı Rolü (Yetkisi)</label>
+                    <select asp-for="RoleId" class="form-select" required>
+                        <option value="2">Hasta (Patient)</option>
+                        <option value="3">Doktor (Doctor)</option>
+                        <option value="1">Yönetici (Admin)</option>
+                    </select>
+                </div>
+
+                <!-- Aktiflik durumu gizli olarak gönderilir, varsayılan true'dur -->
+                <input type="hidden" asp-for="IsActive" value="true" />
+
+                <div class="text-end">
+                    <a asp-action="Index" class="btn btn-light me-2">İptal</a>
+                    <button type="submit" class="btn btn-secondary px-4 fw-bold">Kullanıcıyı Oluştur</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

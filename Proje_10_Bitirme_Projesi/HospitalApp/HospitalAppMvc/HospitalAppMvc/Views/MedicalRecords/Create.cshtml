@@ -1,0 +1,61 @@
+﻿@model HospitalAppMvc.Models.MedicalRecordViewModel
+
+<div class="container mt-5">
+    <div class="card border-0 shadow-lg rounded-4 mx-auto" style="max-width: 650px;">
+        <div class="card-header text-white p-4" style="background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);">
+            <h4 class="mb-0 fw-bold"><i class="bi bi-file-earmark-medical-fill me-2"></i> Yeni Muayene Kaydı</h4>
+            <p class="mb-0 mt-1 opacity-75" style="font-size: 13px;">Hasta muayenesi sonrası tanı ve reçete giriş alanı.</p>
+        </div>
+        <div class="card-body p-4 bg-white">
+
+            <form asp-action="Create" method="post">
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold text-muted">Muayene Edilen Randevu</label>
+                    <select asp-for="AppointmentId" class="form-select border-2" required>
+                        <option value="">-- Lütfen Randevu Seçin --</option>
+                        @if (ViewBag.Appointments != null)
+                        {
+                            foreach (var app in (IEnumerable<SelectListItem>)ViewBag.Appointments)
+                            {
+                                <option value="@app.Value">@app.Text</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold text-danger"><i class="bi bi-heart-pulse-fill"></i> Tanı (Diagnosis)</label>
+                    <input asp-for="Diagnosis" type="text" class="form-control border-2" placeholder="Örn: Akut Faranjit" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold text-primary"><i class="bi bi-card-text"></i> Reçete Özeti</label>
+                    <input asp-for="Prescription" class="form-control border-2" placeholder="Örn: Antibiyotik Tedavisi" required />
+                </div>
+
+                <!-- YENİ EKLENEN İLAÇ VE RÖNTGEN ALANLARI -->
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold text-primary"><i class="bi bi-capsule"></i> Verilen İlaçlar (Detaylı)</label>
+                        <textarea asp-for="Medicines" class="form-control border-2" rows="2" placeholder="Örn: 1x Parol, 2x Amoklavin..."></textarea>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold text-info"><i class="bi bi-activity"></i> Lab. ve Röntgen Sonuçları</label>
+                        <textarea asp-for="LabAndXRayResults" class="form-control border-2" rows="2" placeholder="Kan tahlili temiz, X-Ray normal..."></textarea>
+                    </div>
+                </div>
+
+                <div class="mb-4 border-top pt-3">
+                    <label class="form-label fw-bold text-secondary"><i class="bi bi-journal-text"></i> Doktor Notları</label>
+                    <textarea asp-for="Notes" class="form-control border-2" rows="2" placeholder="İstirahat veya perhiz tavsiyeleri..."></textarea>
+                </div>
+
+                <div class="text-end border-top pt-3">
+                    <a asp-action="Index" class="btn btn-light border fw-bold me-2 px-4">İptal</a>
+                    <button type="submit" class="btn btn-primary fw-bold px-4"><i class="bi bi-check2-circle"></i> Kaydı Tamamla</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

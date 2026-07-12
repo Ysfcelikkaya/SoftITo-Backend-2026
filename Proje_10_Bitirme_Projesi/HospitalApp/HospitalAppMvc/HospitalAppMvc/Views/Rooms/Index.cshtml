@@ -1,0 +1,66 @@
+﻿@model IEnumerable<HospitalAppMvc.Models.RoomViewModel>
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-dark"><i class="bi bi-door-open-fill text-warning"></i> Odalar</h2>
+
+        <!-- İŞTE BURASI DÜZELDİ: Artık Ekleme Sayfasına Giden Bir Link -->
+        <a asp-action="Create" class="btn btn-primary fw-bold px-4 rounded-pill shadow-sm">
+            + Yeni Oda Ekle
+        </a>
+    </div>
+
+    <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="card-body p-0">
+            <table class="table table-hover mb-0 align-middle text-center">
+                <thead class="text-white" style="background: linear-gradient(180deg, #111827 0%, #1f2937 100%);">
+                    <tr>
+                        <th class="py-3 px-4">Oda No</th>
+                        <th class="py-3 px-4">Tipi</th>
+                        <th class="py-3 px-4">Durum</th>
+                        <th class="py-3 px-4 text-end">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white">
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var room in Model)
+                        {
+                            <tr>
+                                <td class="py-3 px-4 fw-bold text-dark">@room.RoomNumber</td>
+                                <td class="py-3 px-4">
+                                    <span class="badge bg-light text-primary border">@room.Type</span>
+                                </td>
+                                <td class="py-3 px-4">
+                                    @if (room.IsOccupied)
+                                    {
+                                        <span class="badge bg-danger rounded-pill px-3 py-2">Dolu</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-success rounded-pill px-3 py-2">Boş</span>
+                                    }
+                                </td>
+                                <td class="py-3 px-4 text-end">
+                                    <a href="/Rooms/Edit/@room.Id" class="btn btn-sm btn-warning fw-bold rounded-pill px-3 shadow-sm me-2 text-dark">
+                                        ✏️ Düzenle
+                                    </a>
+                                    <!-- SİLME BUTONU ARTIK ÇALIŞIYOR -->
+                                    <form asp-action="Delete" asp-route-id="@room.Id" method="post" class="d-inline">
+                                        <button type="submit" class="btn btn-sm btn-danger fw-bold rounded-pill px-3 shadow-sm" onclick="return confirm('Bu odayı silmek istediğinize emin misiniz?');">
+                                            🗑️ Sil
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr><td colspan="4" class="text-center py-5 text-muted">Oda bulunamadı.</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

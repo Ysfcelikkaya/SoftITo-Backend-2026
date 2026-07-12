@@ -1,0 +1,121 @@
+﻿@{
+    Layout = null; // İçerideki admin panelini değil, tam ekran bağımsız bir sayfa tasarımı kullanacağız
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Randevu (MHRS) - HospitalApp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; }
+        .navbar-custom { background-color: #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.05); padding: 15px 0; }
+        .hero-section {
+            /* Arka planda şık bir hastane resmi */
+            background: linear-gradient(rgba(30, 60, 114, 0.8), rgba(42, 82, 152, 0.8)), url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2000&auto=format&fit=crop') center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        .btn-login { background-color: #e63946; color: white; border-radius: 50px; padding: 12px 35px; font-weight: bold; font-size: 1.1rem; border: none; transition: 0.3s; }
+        .btn-login:hover { background-color: #d62828; transform: scale(1.05); color:white; }
+        .card-news { border: none; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: 0.3s; }
+        .card-news:hover { transform: translateY(-5px); }
+    </style>
+</head>
+<body>
+
+    <!-- ÜST MENÜ (NAVBAR) -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary fs-3" href="#">
+                <i class="bi bi-hospital"></i> Hospital<span class="text-danger">App</span>
+            </a>
+            <div class="ms-auto">
+                <a href="/Auth/Login" class="btn btn-outline-primary fw-bold rounded-pill px-4 me-2">Giriş Yap</a>
+                <a href="/Auth/Register" class="btn btn-primary fw-bold rounded-pill px-4">Kayıt Ol</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- KARŞILAMA / HERO EKRANI -->
+    <div class="hero-section">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">Merkezi Hekim Randevu Sistemi</h1>
+            <p class="lead mb-5">Hastanemizde sıra beklemeden, dilediğiniz doktordan anında randevu alın. Sağlığınız bizim önceliğimizdir.</p>
+            <!-- E-RANDEVU BUTONU: Bizi doğrudan Auth/Login'e uçuracak -->
+            <a href="/Auth/Login" class="btn btn-login shadow-lg"><i class="bi bi-calendar2-check-fill me-2"></i> E-Randevu Al (Sisteme Giriş)</a>
+        </div>
+    </div>
+
+    <!-- DUYURULAR KISMI -->
+    <div class="container mt-5 pt-4">
+        <h2 class="fw-bold text-center mb-5" style="color:#1e3c72;">Güncel Duyurular ve Haberler</h2>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card card-news h-100">
+                    <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=800&auto=format&fit=crop" class="card-img-top" style="height:200px; object-fit:cover; border-top-left-radius:15px; border-top-right-radius:15px;" alt="Göz">
+                    <div class="card-body">
+                        <span class="badge bg-danger mb-2">Önemli</span>
+                        <h5 class="card-title fw-bold">Göz Polikliniği Açıldı!</h5>
+                        <p class="card-text text-muted">Hastanemizin yeni Göz Hastalıkları polikliniği son teknoloji cihazlarla hizmetinize girmiştir. Hemen randevu alabilirsiniz.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-news h-100">
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop" class="card-img-top" style="height:200px; object-fit:cover; border-top-left-radius:15px; border-top-right-radius:15px;" alt="Covid">
+                    <div class="card-body">
+                        <span class="badge bg-primary mb-2">Bilgilendirme</span>
+                        <h5 class="card-title fw-bold">Kış Ayları Randevu Yoğunluğu</h5>
+                        <p class="card-text text-muted">Kış aylarında artan salgın hastalıklar nedeniyle randevularınızı 3 gün önceden almanızı önemle rica ederiz.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-news h-100">
+                    <img src="https://images.unsplash.com/photo-1551076805-e1869043e560?q=80&w=800&auto=format&fit=crop" class="card-img-top" style="height:200px; object-fit:cover; border-top-left-radius:15px; border-top-right-radius:15px;" alt="Rapor">
+                    <div class="card-body">
+                        <span class="badge bg-success mb-2">Yenilik</span>
+                        <h5 class="card-title fw-bold">Online Fatura & Rapor</h5>
+                        <p class="card-text text-muted">Artık hastane fişlerinizi ve muayene raporlarınızı hasta panelinize girerek PDF olarak indirebilirsiniz.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HASTANE İSTATİSTİKLERİ BARI -->
+    <div class="bg-light mt-5 py-5 border-top">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h1 class="fw-bold text-primary">15+</h1>
+                    <h5 class="text-muted">Uzman Doktor</h5>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h1 class="fw-bold text-danger">5000+</h1>
+                    <h5 class="text-muted">Mutlu Hasta</h5>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h1 class="fw-bold text-success">7/24</h1>
+                    <h5 class="text-muted">Kesintisiz Destek</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ALT KISIM (FOOTER) -->
+    <footer class="text-center py-4" style="background-color: #111827; color: rgba(255,255,255,0.7);">
+        <div class="container">
+            <p class="mb-0">© 2026 HospitalApp Tüm Hakları Saklıdır. | Randevu ve İletişim İçin Tıklayın.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

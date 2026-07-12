@@ -1,0 +1,48 @@
+﻿@model HospitalAppMvc.Models.AdmissionViewModel
+
+<div class="container mt-5">
+    <div class="card border-0 shadow-lg rounded-4 mx-auto" style="max-width: 550px;">
+        <div class="card-header text-white p-4" style="background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);">
+            <h4 class="mb-0 fw-bold"><i class="bi bi-hospital-fill me-2"></i> Yeni Hasta Yatışı</h4>
+            <p class="mb-0 mt-1 opacity-75" style="font-size: 13px;">Sadece boş durumda olan odalar listelenmektedir.</p>
+        </div>
+        <div class="card-body p-4 bg-white">
+
+            <form asp-action="Create" method="post">
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold text-muted">Yatırılacak Hasta</label>
+                    <select asp-for="PatientId" class="form-select border-2" required>
+                        <option value="">-- Lütfen Hasta Seçin --</option>
+                        @if (ViewBag.Patients != null)
+                        {
+                            foreach (var pat in (IEnumerable<SelectListItem>)ViewBag.Patients)
+                            {
+                                <option value="@pat.Value">@pat.Text</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="mb-5">
+                    <label class="form-label fw-bold text-muted">Tahsis Edilecek Oda (Sadece Boş Odalar)</label>
+                    <select asp-for="RoomId" class="form-select border-2" required>
+                        <option value="">-- Lütfen Boş Bir Oda Seçin --</option>
+                        @if (ViewBag.EmptyRooms != null)
+                        {
+                            foreach (var room in (IEnumerable<SelectListItem>)ViewBag.EmptyRooms)
+                            {
+                                <option value="@room.Value">@room.Text</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="text-end border-top pt-3">
+                    <a asp-action="Index" class="btn btn-light border fw-bold me-2 px-4">İptal</a>
+                    <button type="submit" class="btn btn-primary fw-bold px-4">Yatışı Onayla</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

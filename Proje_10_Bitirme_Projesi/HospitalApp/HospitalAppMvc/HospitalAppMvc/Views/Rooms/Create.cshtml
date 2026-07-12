@@ -1,0 +1,51 @@
+@model HospitalAppMvc.Models.RoomViewModel
+
+<div class="container mt-5">
+    <div class="card border-0 shadow-lg rounded-4 mx-auto" style="max-width: 500px;">
+        <div class="card-header text-white p-4" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);">
+            <h4 class="mb-0 fw-bold">🚪 Yeni Oda Ekle</h4>
+        </div>
+        <div class="card-body p-4 bg-white">
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger fw-bold">@ViewBag.Error</div>
+            }
+
+            <form asp-action="Create" method="post">
+                <div class="mb-3">
+                    <label class="form-label fw-bold text-muted">Oda Numarası</label>
+                    <input type="text" asp-for="RoomNumber" class="form-control" required placeholder="Örn: 101, B Blok-202" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold text-muted">Oda Tipi</label>
+                    <select asp-for="Type" class="form-select">
+                        <option value="Standard">Standart Oda</option>
+                        <option value="VIP">VIP Oda</option>
+                        <option value="ICU">Yoğun Bakım (ICU)</option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold text-muted">Ait Olduğu Poliklinik</label>
+                    <select asp-for="DepartmentId" class="form-select" required>
+                        <option value="">-- Lütfen Poliklinik Seçin --</option>
+                        @if (ViewBag.Departments != null)
+                        {
+                            foreach (var dept in (IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>)ViewBag.Departments)
+                            {
+                                <option value="@dept.Value">@dept.Text</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="text-end">
+                    <a asp-action="Index" class="btn btn-light border fw-bold me-2">İptal</a>
+                    <button type="submit" class="btn btn-primary fw-bold px-4">Odayı Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

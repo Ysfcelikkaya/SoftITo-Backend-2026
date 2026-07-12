@@ -1,0 +1,85 @@
+﻿@model IEnumerable<HospitalAppMvc.Models.InvoiceViewModel>
+
+<div class="container mt-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-dark"><i class="bi bi-credit-card-2-front-fill text-success me-2"></i> Faturalar ve Ödemeler</h2>
+
+        <!-- SADECE ADMIN FATURA KESEBİLİR -->
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-controller="Invoices" asp-action="Create" class="btn btn-success fw-bold px-4 rounded-pill shadow-sm">
+                <i class="bi bi-plus-circle"></i> Yeni Fatura Kes
+            </a>
+        }
+    </div>
+
+    <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="card-body p-0">
+            <table class="table table-hover mb-0 align-middle text-center">
+
+                <thead class="text-white" style="background: linear-gradient(180deg, #1f2937 0%, #111827 100%);">
+                    <tr>
+                        <th class="py-3 px-4">Fatura No</th>
+                        <th class="py-3 px-4">Hasta Adı</th>
+                        <th class="py-3 px-4">Kesim Tarihi</th>
+                        <th class="py-3 px-4">Tutar</th>
+                        <th class="py-3 px-4">Durum</th>
+                        <th class="py-3 px-4 text-end">İşlem</th>
+                    </tr>
+                </thead>
+
+                <tbody class="bg-white">
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var inv in Model)
+                        {
+                            <tr>
+                                <td class="py-3 px-4 text-muted fw-bold">#INV-@inv.Id.ToString("D5")</td>
+                                <td class="py-3 px-4 text-primary fw-bold">@inv.PatientName</td>
+                                <td class="py-3 px-4">@inv.IssueDate.ToString("dd.MM.yyyy HH:mm")</td>
+                                <td class="py-3 px-4 text-dark fw-bold fs-5">₺@inv.Amount.ToString("N2")</td>
+
+                                <td class="py-3 px-4">
+                                    @if (inv.Status == "Paid")
+                                    {
+                                        <span class="badge bg-success rounded-pill px-3 py-2"><i class="bi bi-check-circle"></i> Ödendi</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger rounded-pill px-3 py-2"><i class="bi bi-exclamation-circle"></i> Ödenmedi</span>
+                                    }
+                                </td>
+
+                                <td class="py-3 px-4 text-end">
+                                    @if (inv.Status != "Paid")
+                                    {
+                                        <form action="/Invoices/Pay" method="post" class="d-inline" onsubmit="return confirm('Tutar kredi kartınızdan tahsil edilecektir. Onaylıyor musunuz?');">
+                                            <input type="hidden" name="id" value="@inv.Id" />
+                                            <button type="submit" class="btn btn-sm btn-outline-success fw-bold rounded-pill px-3 shadow-sm">
+                                                <i class="bi bi-credit-card"></i> Hemen Öde
+                                            </button>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <!-- İŞTE BURASI DEĞİŞTİ: YAZDIR / PDF İNDİR BUTONU -->
+                                        <a href="/Invoices/Print/@inv.Id" class="btn btn-sm btn-outline-secondary fw-bold rounded-pill px-3 shadow-sm" target="_blank">
+                                            <i class="bi bi-printer"></i> Yazdır / PDF
+                                        </a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center py-5 text-muted">Şu anda sistemde hiç fatura bulunmuyor.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

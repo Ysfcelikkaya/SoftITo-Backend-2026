@@ -1,0 +1,176 @@
+﻿@model IEnumerable<HospitalAppMvc.Models.PatientViewModel>
+@{
+    ViewData["Title"] = "Hasta Listesi";
+}
+
+<style>
+    /* Tablo ve Butonlar için Özel Premium CSS */
+    .glass-table-container {
+        background: white;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #f8f9fa;
+        transform: scale(1.002);
+        transition: all 0.2s ease;
+    }
+
+    .btn-create {
+        background: linear-gradient(135deg, #3A8DFF, #0056D2);
+        color: white;
+        border: none;
+    }
+
+        .btn-create:hover {
+            background: linear-gradient(135deg, #0056D2, #3A8DFF);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+    .btn-excel {
+        background: linear-gradient(135deg, #10AC84, #1DD1A1);
+        color: white;
+        border: none;
+    }
+
+        .btn-excel:hover {
+            background: linear-gradient(135deg, #1DD1A1, #10AC84);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+    .btn-pdf {
+        background: linear-gradient(135deg, #E67E22, #F39C12);
+        color: white;
+        border: none;
+    }
+
+        .btn-pdf:hover {
+            background: linear-gradient(135deg, #F39C12, #E67E22);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+    .search-btn {
+        background: #3A8DFF;
+        color: white;
+        border: none;
+    }
+
+        .search-btn:hover {
+            background: #0056D2;
+            color: white;
+        }
+
+    thead {
+        background: #f1f4f8;
+        color: #2c3e50;
+    }
+</style>
+
+<div class="container mt-4">
+    <!-- HATA VEYA BAŞARI MESAJI GÖSTERİM ALANI -->
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show fw-bold shadow-sm" role="alert">
+            ⚠️ @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show fw-bold shadow-sm" role="alert">
+            ✅ @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold" style="color: #2c3e50;">Hasta Listesi</h2>
+            <p class="text-muted mb-0">Hastaneye kayıtlı tüm hastalar ve raporlama işlemleri.</p>
+        </div>
+
+        <!-- Üst İşlem Butonları -->
+        <div>
+            <!-- Yeni Ekle Butonu -->
+            <a asp-action="Create" class="btn btn-create me-2 px-4 shadow-sm">
+                ➕ Yeni Hasta Ekle
+            </a>
+
+            <!-- Raporlama Butonları (Dapper API'ye Doğrudan Link) -->
+            <a href="https://localhost:7241/api/Reports/ExportPatientsToExcel" class="btn btn-excel me-2 px-4 shadow-sm">
+                📊 Excel İndir
+            </a>
+            <a href="https://localhost:7241/api/Reports/ExportPatientsToPdf" class="btn btn-pdf px-4 shadow-sm">
+                📄 PDF İndir
+            </a>
+        </div>
+    </div>
+
+    <div class="glass-table-container">
+        <!-- Arama Kutusu -->
+        <form asp-controller="Patients" asp-action="Index" method="get" class="mb-4">
+            <div class="input-group w-50 shadow-sm rounded">
+                <input type="text" name="searchString" class="form-control border-0 bg-light" placeholder="Hastanın adını veya soyadını yazın..." />
+                <button type="submit" class="btn search-btn px-4">🔍 Ara</button>
+            </div>
+        </form>
+
+        <!-- Hasta Tablosu -->
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th class="py-3">TC Kimlik No</th>
+                        <th class="py-3">Adı</th>
+                        <th class="py-3">Soyadı</th>
+                        <th class="py-3">Kan Grubu</th>
+                        <th class="py-3 text-end">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var patient in Model)
+                        {
+                            <tr>
+                                <td class="fw-semibold">@patient.IdentityNumber</td>
+                                <td>@patient.FirstName</td>
+                                <td>@patient.LastName</td>
+                                <td>
+                                    <span class="badge bg-danger bg-opacity-75 px-3 py-2 rounded-pill">@patient.BloodGroup</span>
+                                </td>
+
+                                <!-- İŞLEMLER SÜTUNU (Düzenle ve Sil Butonları Eklendi) -->
+                                <td class="text-end d-flex justify-content-end gap-2">
+                                    <a asp-action="Edit" asp-route-id="@patient.Id" class="btn btn-sm btn-outline-warning fw-bold px-3">
+                                        ✏️ Düzenle
+                                    </a>
+
+                                    <form asp-action="Delete" asp-route-id="@patient.Id" method="post" onsubmit="return confirm('Bu hastayı tamamen silmek istediğinize emin misiniz?');">
+                                        <button type="submit" class="btn btn-sm btn-outline-danger fw-bold px-3">
+                                            🗑️ Sil
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="5" class="text-center py-5 text-muted">
+                                <h5>Hiç hasta bulunamadı.</h5>
+                                <p>Aradığınız kritere uygun kayıt yok veya veritabanı boş.</p>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

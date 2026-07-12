@@ -1,0 +1,73 @@
+﻿@model HospitalAppMvc.Models.DoctorViewModel
+
+<div class="container mt-5">
+    <div class="card border-0 shadow-lg rounded-4 overflow-hidden mx-auto" style="max-width: 650px;">
+        <div class="card-header text-white p-4" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);">
+            <h4 class="mb-0 fw-bold">👨‍⚕️ Yeni Doktor Ekle</h4>
+        </div>
+        <div class="card-body p-4 bg-white">
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger fw-bold">@ViewBag.Error</div>
+            }
+
+            <form asp-action="Create" method="post">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label text-muted fw-bold">Adı</label>
+                        <input type="text" asp-for="FirstName" class="form-control" placeholder="Örn: Ahmet" required />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label text-muted fw-bold">Soyadı</label>
+                        <input type="text" asp-for="LastName" class="form-control" placeholder="Örn: Yılmaz" required />
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label text-muted fw-bold">Ünvanı (Prof., Uzm. vb.)</label>
+                    <input type="text" asp-for="Title" class="form-control" placeholder="Örn: Prof. Dr." required />
+                </div>
+
+                <div class="row bg-light p-3 rounded-3 mb-3 border">
+                    <!-- KULLANICI (USER) SEÇİMİ (COMBOBOX) -->
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <label class="form-label text-primary fw-bold">Sisteme Kayıtlı Kullanıcı</label>
+                        <select asp-for="UserId" class="form-select border-primary shadow-sm" required>
+                            <option value="">-- Listeden Kullanıcı Seçin --</option>
+                            @if (ViewBag.Users != null)
+                            {
+                                foreach (var u in ViewBag.Users)
+                                {
+                                    <option value="@u.Id">@u.Username (@u.Email)</option>
+                                }
+                            }
+                        </select>
+                        <small class="text-muted" style="font-size: 12px;">Bu doktorun giriş yapacağı hesaptır.</small>
+                    </div>
+
+                    <!-- POLİKLİNİK (DEPARTMENT) SEÇİMİ (COMBOBOX) -->
+                    <div class="col-md-6">
+                        <label class="form-label text-success fw-bold">Görevli Olduğu Poliklinik</label>
+                        <select asp-for="DepartmentId" class="form-select border-success shadow-sm" required>
+                            <option value="">-- Poliklinik Seçin --</option>
+                            @if (ViewBag.Departments != null)
+                            {
+                                foreach (var d in ViewBag.Departments)
+                                {
+                                    <option value="@d.Id">@d.Name</option>
+                                }
+                            }
+                        </select>
+                        <small class="text-muted" style="font-size: 12px;">Hangi bölümde çalışacağını seçin.</small>
+                    </div>
+                </div>
+
+                <div class="mt-4 text-end">
+                    <a asp-action="Index" class="btn btn-light border fw-bold me-2 px-4">İptal</a>
+                    <button type="submit" class="btn btn-primary fw-bold px-5 shadow-sm">Sisteme Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
