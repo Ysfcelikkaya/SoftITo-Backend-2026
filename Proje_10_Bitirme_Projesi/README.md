@@ -218,6 +218,26 @@ Proje dizin yapısı, anlaşılabilirlik ve sürdürülebilirlik açısından Ç
 ![Yeni Kullanıcı](Screenshots/mvc18_yenikullanici.png)
 *Sisteme yetkili (Admin, Doktor) veya standart kullanıcı (Hasta) hesaplarının tanımlandığı modal ekranı.*
 
+**19. Poliklinikler Listesi**
+![Poliklinikler](Screenshots/mvc19_poliklinikler.png)
+*Hastanede bulunan tüm tıbbi birimlerin (Kardiyoloji, Göz vb.) yönetildiği sayfa.*
+
+**20. Yeni Poliklinik Ekleme Modalı**
+![Yeni Poliklinik](Screenshots/mvc20_yenipoliklinik.png)
+*Sisteme yeni bir hastane bölümünün adı ve açıklamasıyla birlikte kaydedilmesi.*
+
+**21. Yatan Hasta Odaları Listesi**
+![Odalar](Screenshots/mvc21_odalar.png)
+*Standart, VIP ve Yoğun Bakım (ICU) odalarının "Dolu/Boş" durumlarının takip edildiği yönetim ekranı.*
+
+**22. Yeni Oda Tanımlama Modalı**
+![Yeni Oda](Screenshots/mvc22_yenioda.png)
+*Belirli bir polikliniğe bağlı yeni odaların kapasite ve tip özellikleriyle sisteme eklenmesi.*
+
+**23. Oda Durumu Düzenleme**
+![Oda Düzenle](Screenshots/mvc23_odaduzenle.png)
+*Hastane personelinin yatan hastalar için odanın "Dolu mu?" durumunu anlık olarak değiştirebildiği ekran.*
+
 ### 🔌 API / Swagger (Servis Uç Noktaları)
 <p align="center">
   <img src="Screenshots/api.png" width="48%" />
