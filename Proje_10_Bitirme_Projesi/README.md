@@ -170,6 +170,14 @@ Proje dizin yapısı, anlaşılabilirlik ve sürdürülebilirlik açısından Ç
 ![Muayene Kaydı](Screenshots/mvc6_muayene.png)
 *Doktorların hastalar için tanı koyduğu, reçete yazdığı ve tahlil sonuçlarını sisteme girdiği kapsamlı muayene kayıt ekranı.*
 
+**7. Yeni Fatura Kesme İşlemi**
+![Fatura Kesme](Screenshots/mvc7_fatura.png)
+*Hastaların ayakta (randevulu) veya yatarak (oda yatışlı) tedavileri için detaylı faturalandırma ve ödeme yönetim ekranı.*
+
+**8. Yeni Doktor ve Poliklinik Tanımlama**
+![Doktor Ekleme](Screenshots/mvc8_doktor.png)
+*Sisteme yeni uzman hekimlerin unvan, poliklinik ve hesap bilgileriyle birlikte eklendiği yetkilendirme sayfası.*
+
 ### 🔌 API / Swagger (Servis Uç Noktaları)
 <p align="center">
   <img src="Screenshots/api.png" width="48%" />
