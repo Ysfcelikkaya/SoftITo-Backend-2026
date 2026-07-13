@@ -139,3 +139,19 @@ Proje dizin yapısı, anlaşılabilirlik ve sürdürülebilirlik açısından Ç
 ├── 📁 HospitalAppMvc/    # Web API ile haberleşen son kullanıcı arayüz katmanı
 └── 📁 HospitalAppDppr/   # Dapper (Micro-ORM) ile veri erişimi yapılan katman
 ```
+
+---
+
+## 📸 EKRAN GÖRÜNTÜLERİ
+
+### 🌐 MVC Ön Yüz (Kullanıcı Arayüzü)
+![MVC Arayüzü](Screenshots/mvc.png)
+
+### 🔌 API / Swagger (Servis Uç Noktaları)
+<p align="center">
+  <img src="Screenshots/api.png" width="48%" />
+  <img src="Screenshots/api2.png" width="48%" />
+</p>
+
+### ⚡ Dapper Entegrasyonu
+![Dapper Kullanımı](Screenshots/dapper.png)
