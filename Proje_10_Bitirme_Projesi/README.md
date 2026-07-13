@@ -162,6 +162,10 @@ Proje dizin yapısı, anlaşılabilirlik ve sürdürülebilirlik açısından Ç
 ![Dashboard](Screenshots/mvc4_dashboard.png)
 *Hastane yöneticileri ve doktorlar için tasarlanmış; istatistiklerin, randevuların ve gelirlerin takip edildiği kapsamlı kontrol paneli.*
 
+**5. Semptom Kontrol Botu (Akıllı Yönlendirme)**
+![Semptom Botu](Screenshots/mvc5_chatbot.png)
+*Hastaların şikayetlerini dinleyip onları doğru polikliniğe (Örn: Göz Hastalıkları) yönlendiren yenilikçi asistan modülü.*
+
 ### 🔌 API / Swagger (Servis Uç Noktaları)
 <p align="center">
   <img src="Screenshots/api.png" width="48%" />
