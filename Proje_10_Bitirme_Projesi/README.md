@@ -198,6 +198,26 @@ Proje dizin yapısı, anlaşılabilirlik ve sürdürülebilirlik açısından Ç
 ![Hasta Listesi](Screenshots/mvc13_hastalistesi.png)
 *Kayıtlı hastaların filtrelenebildiği, excel/pdf olarak indirilebildiği yönetim paneli listesi.*
 
+**14. Hasta Profil Tanımlama Ekranı**
+![Hasta Kayıt](Screenshots/mvc14_hastakayit.png)
+*Yeni hastaların T.C. Kimlik, kan grubu ve iletişim bilgileriyle sisteme kaydedildiği detaylı form.*
+
+**15. Dinamik PDF Rapor Çıktısı**
+![PDF Rapor](Screenshots/mvc15_pdfrapor.png)
+*Sistem üzerinden anlık olarak oluşturulan kurumsal PDF dökümleri (Hasta raporu, fatura vb).*
+
+**16. Sistem Kullanıcıları ve Yetkilendirme**
+![Kullanıcı Listesi](Screenshots/mvc16_kullanicilar.png)
+*Yönetici, Doktor ve Hasta rollerine sahip tüm kullanıcıların yönetildiği merkezi liste.*
+
+**17. Hastane Doktorları Listesi**
+![Doktor Listesi](Screenshots/mvc17_doktorlar.png)
+*Sistemdeki tüm uzman doktorların ve polikliniklerinin görüntülendiği yönetim paneli sayfası.*
+
+**18. Yeni Kullanıcı Hesabı Açma**
+![Yeni Kullanıcı](Screenshots/mvc18_yenikullanici.png)
+*Sisteme yetkili (Admin, Doktor) veya standart kullanıcı (Hasta) hesaplarının tanımlandığı modal ekranı.*
+
 ### 🔌 API / Swagger (Servis Uç Noktaları)
 <p align="center">
   <img src="Screenshots/api.png" width="48%" />
