@@ -1,6 +1,6 @@
-<div align="center">
+﻿<div align="center">
 
-# 🏥 HASTANE YÖNETİM SİSTEMİ 🩺
+# ğŸ¥ HASTANE YÃ–NETÄ°M SÄ°STEMÄ° ğŸ©º
 
 [![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
 [![ASP.NET Core Web API](https://img.shields.io/badge/ASP.NET_Core-Web_API-blue?style=for-the-badge&logo=blazor&logoColor=white)]()
@@ -8,7 +8,7 @@
 [![SQL Server](https://img.shields.io/badge/SQL%20Server-Database-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)]()
 
 <p align="center">
-  <b>Modern, ölçeklenebilir ve güvenli hastane ve sağlık kurumu otomasyon yazılımı.</b><br>
+  <b>Modern, Ã¶lÃ§eklenebilir ve gÃ¼venli hastane ve saÄŸlÄ±k kurumu otomasyon yazÄ±lÄ±mÄ±.</b><br>
   <i>SoftITo 2026 Backend Bitirme Projesi</i>
 </p>
 
@@ -16,275 +16,275 @@
 
 ---
 
-## 📋 İÇİNDEKİLER
+## ğŸ“‹ Ä°Ã‡Ä°NDEKÄ°LER
 
-- [🎯 Proje Hakkında](#-proje-hakkında)
-- [✨ Detaylı Özellikler](#-detaylı-özellikler)
-- [🛠 Kullanılan Teknolojiler](#-kullanılan-teknolojiler)
-- [💻 Sistem Gereksinimleri](#-sistem-gereksinimleri)
-- [🚀 Kurulum Adımları](#-kurulum-adımları)
-- [🗂️ Proje Mimarisi](#️-proje-mimarisi)
-
----
-
-## 🎯 PROJE HAKKINDA
-
-**Hastane Yönetim Sistemi**, hastane operasyonlarını (hasta kayıt, doktor atama, randevu vb.) dijitalleştirmek amacıyla geliştirilmiş uçtan uca bir yazılım çözümüdür. Arka planda yüksek performanslı bir **RESTful Web API** koşarken, ön tarafta **ASP.NET Core MVC** kullanılarak kullanıcı dostu bir arayüz tasarlanmıştır.
-
-Bu sistem sayesinde sağlık kurumları:
-
-- 🏥 **Hasta ve doktor bilgilerini** tek bir merkezden yönetebilir,
-- 🔐 **JWT tabanlı kimlik doğrulama** ile güvenli erişim sağlayabilir,
-- ⚡ **Yüksek performanslı altyapı** sayesinde işlemleri kesintisiz gerçekleştirebilir.
-
-Proje, kurumsal mimari standartlarına ve temiz kod (Clean Code) prensiplerine uygun olarak geliştirilmiş olup, kritik sorgularda performansı artırmak için Stored Procedure ve Micro-ORM araçları içermektedir.
-
-> **Not:** Bu proje, **SoftITo 2026 Backend Bitirme Projesi** kapsamında tasarlanmış ve geliştirilmiştir.
+- [ğŸ¯ Proje HakkÄ±nda](#-proje-hakkÄ±nda)
+- [âœ¨ DetaylÄ± Ã–zellikler](#-detaylÄ±-Ã¶zellikler)
+- [ğŸ›  KullanÄ±lan Teknolojiler](#-kullanÄ±lan-teknolojiler)
+- [ğŸ’» Sistem Gereksinimleri](#-sistem-gereksinimleri)
+- [ğŸš€ Kurulum AdÄ±mlarÄ±](#-kurulum-adÄ±mlarÄ±)
+- [ğŸ—‚ï¸ Proje Mimarisi](#ï¸-proje-mimarisi)
 
 ---
 
-## ✨ DETAYLI ÖZELLİKLER
+## ğŸ¯ PROJE HAKKINDA
 
-Sistem, sağlık kurumu işleyişini kolaylaştıran temel modüllerden oluşur:
+**Hastane YÃ¶netim Sistemi**, hastane operasyonlarÄ±nÄ± (hasta kayÄ±t, doktor atama, randevu vb.) dijitalleÅŸtirmek amacÄ±yla geliÅŸtirilmiÅŸ uÃ§tan uca bir yazÄ±lÄ±m Ã§Ã¶zÃ¼mÃ¼dÃ¼r. Arka planda yÃ¼ksek performanslÄ± bir **RESTful Web API** koÅŸarken, Ã¶n tarafta **ASP.NET Core MVC** kullanÄ±larak kullanÄ±cÄ± dostu bir arayÃ¼z tasarlanmÄ±ÅŸtÄ±r.
 
-### 👥 1. Hasta & Doktor Yönetimi
-- 📝 **Hasta Kaydı:** Sisteme yeni hasta bilgilerinin eklenmesi ve düzenlenmesi.
-- 👨‍⚕️ **Doktor Yönetimi:** İlgili branşlara doktor atanması ve takibi.
+Bu sistem sayesinde saÄŸlÄ±k kurumlarÄ±:
 
-### 🔐 2. Güvenlik & Yetkilendirme
-- 🛡️ **JWT Entegrasyonu:** Güvenli oturum yönetimi ve bulut tabanlı kimlik doğrulama.
-- 🔑 **Azure SDK:** Bulut hizmetleriyle entegre güvenlik çözümleri.
+- ğŸ¥ **Hasta ve doktor bilgilerini** tek bir merkezden yÃ¶netebilir,
+- ğŸ” **JWT tabanlÄ± kimlik doÄŸrulama** ile gÃ¼venli eriÅŸim saÄŸlayabilir,
+- âš¡ **YÃ¼ksek performanslÄ± altyapÄ±** sayesinde iÅŸlemleri kesintisiz gerÃ§ekleÅŸtirebilir.
 
-### ⚡ 3. Performans Optimizasyonu
-- 🚀 **Stored Procedures:** Kritik veritabanı işlemlerinde (CRUD) yanıt sürelerinin maksimize edilmesi.
-- 🔄 **Micro-ORM:** İhtiyaç duyulan noktalarda Dapper kullanılarak yüksek hızlı veri çekimi.
+Proje, kurumsal mimari standartlarÄ±na ve temiz kod (Clean Code) prensiplerine uygun olarak geliÅŸtirilmiÅŸ olup, kritik sorgularda performansÄ± artÄ±rmak iÃ§in Stored Procedure ve Micro-ORM araÃ§larÄ± iÃ§ermektedir.
 
-### 🌐 4. Uçtan Uca Haberleşme
-- 🔌 **API İstemcisi:** MVC arayüzünün `HttpClient` kullanarak Web API'den kesintisiz veri alıp vermesi.
-- 📄 **Dökümantasyon:** Tüm servis uç noktalarının **Swagger (OpenAPI)** ile test edilebilir formata getirilmesi.
+> **Not:** Bu proje, **SoftITo 2026 Backend Bitirme Projesi** kapsamÄ±nda tasarlanmÄ±ÅŸ ve geliÅŸtirilmiÅŸtir.
 
 ---
 
-## 🛠 KULLANILAN TEKNOLOJİLER
+## âœ¨ DETAYLI Ã–ZELLÄ°KLER
 
-Projenin altyapısında sektör standartlarına uygun, modern teknolojiler kullanılmıştır:
+Sistem, saÄŸlÄ±k kurumu iÅŸleyiÅŸini kolaylaÅŸtÄ±ran temel modÃ¼llerden oluÅŸur:
 
-| Kategori | Teknoloji / Araç | Detay |
+### ğŸ‘¥ 1. Hasta & Doktor YÃ¶netimi
+- ğŸ“ **Hasta KaydÄ±:** Sisteme yeni hasta bilgilerinin eklenmesi ve dÃ¼zenlenmesi.
+- ğŸ‘¨â€âš•ï¸ **Doktor YÃ¶netimi:** Ä°lgili branÅŸlara doktor atanmasÄ± ve takibi.
+
+### ğŸ” 2. GÃ¼venlik & Yetkilendirme
+- ğŸ›¡ï¸ **JWT Entegrasyonu:** GÃ¼venli oturum yÃ¶netimi ve bulut tabanlÄ± kimlik doÄŸrulama.
+- ğŸ”‘ **Azure SDK:** Bulut hizmetleriyle entegre gÃ¼venlik Ã§Ã¶zÃ¼mleri.
+
+### âš¡ 3. Performans Optimizasyonu
+- ğŸš€ **Stored Procedures:** Kritik veritabanÄ± iÅŸlemlerinde (CRUD) yanÄ±t sÃ¼relerinin maksimize edilmesi.
+- ğŸ”„ **Micro-ORM:** Ä°htiyaÃ§ duyulan noktalarda Dapper kullanÄ±larak yÃ¼ksek hÄ±zlÄ± veri Ã§ekimi.
+
+### ğŸŒ 4. UÃ§tan Uca HaberleÅŸme
+- ğŸ”Œ **API Ä°stemcisi:** MVC arayÃ¼zÃ¼nÃ¼n `HttpClient` kullanarak Web API'den kesintisiz veri alÄ±p vermesi.
+- ğŸ“„ **DÃ¶kÃ¼mantasyon:** TÃ¼m servis uÃ§ noktalarÄ±nÄ±n **Swagger (OpenAPI)** ile test edilebilir formata getirilmesi.
+
+---
+
+## ğŸ›  KULLANILAN TEKNOLOJÄ°LER
+
+Projenin altyapÄ±sÄ±nda sektÃ¶r standartlarÄ±na uygun, modern teknolojiler kullanÄ±lmÄ±ÅŸtÄ±r:
+
+| Kategori | Teknoloji / AraÃ§ | Detay |
 |---|---|---|
-| ⚙️ **Backend** | `C# 12`, `.NET 8.0` | Güçlü, güvenli ve performanslı sunucu tarafı. |
-| 🌐 **API & Arayüz** | `ASP.NET Core Web API`, `MVC` | RESTful servisler ve kullanıcı dostu arayüz. |
-| 🗄️ **Veri Yönetimi** | `MS SQL Server`, `EF Core`, `Dapper` | İlişkisel veritabanı ve ORM yaklaşımları. |
-| 🔒 **Güvenlik** | `JWT (JSON Web Token)`, `Azure SDK` | Modern kimlik doğrulama standartları. |
-| 🧩 **Araçlar** | `Swagger`, `HttpClient`, `Git` | API dökümantasyonu ve versiyonlama. |
+| âš™ï¸ **Backend** | `C# 12`, `.NET 8.0` | GÃ¼Ã§lÃ¼, gÃ¼venli ve performanslÄ± sunucu tarafÄ±. |
+| ğŸŒ **API & ArayÃ¼z** | `ASP.NET Core Web API`, `MVC` | RESTful servisler ve kullanÄ±cÄ± dostu arayÃ¼z. |
+| ğŸ—„ï¸ **Veri YÃ¶netimi** | `MS SQL Server`, `EF Core`, `Dapper` | Ä°liÅŸkisel veritabanÄ± ve ORM yaklaÅŸÄ±mlarÄ±. |
+| ğŸ”’ **GÃ¼venlik** | `JWT (JSON Web Token)`, `Azure SDK` | Modern kimlik doÄŸrulama standartlarÄ±. |
+| ğŸ§© **AraÃ§lar** | `Swagger`, `HttpClient`, `Git` | API dÃ¶kÃ¼mantasyonu ve versiyonlama. |
 
 ---
 
-## 💻 SİSTEM GEREKSİNİMLERİ
+## ğŸ’» SÄ°STEM GEREKSÄ°NÄ°MLERÄ°
 
-Projeyi sorunsuz çalıştırabilmeniz için geliştirme ortamınızda bulunması gerekenler:
+Projeyi sorunsuz Ã§alÄ±ÅŸtÄ±rabilmeniz iÃ§in geliÅŸtirme ortamÄ±nÄ±zda bulunmasÄ± gerekenler:
 
-- 🟩 **.NET 8.0 SDK**
-- 🗄️ **MS SQL Server** (LocalDB veya standart kurulum)
-- 💻 **IDE:** Visual Studio 2022 (Tavsiye edilen) veya Visual Studio Code.
+- ğŸŸ© **.NET 8.0 SDK**
+- ğŸ—„ï¸ **MS SQL Server** (LocalDB veya standart kurulum)
+- ğŸ’» **IDE:** Visual Studio 2022 (Tavsiye edilen) veya Visual Studio Code.
 
 ---
 
-## 🚀 KURULUM ADIMLARI
+## ğŸš€ KURULUM ADIMLARI
 
-Projeyi kendi bilgisayarınızda çalıştırmak için aşağıdaki adımları sırasıyla takip ediniz:
+Projeyi kendi bilgisayarÄ±nÄ±zda Ã§alÄ±ÅŸtÄ±rmak iÃ§in aÅŸaÄŸÄ±daki adÄ±mlarÄ± sÄ±rasÄ±yla takip ediniz:
 
-### Adım 1: Projeyi Klonlayın
+### AdÄ±m 1: Projeyi KlonlayÄ±n
 
 ```bash
 git clone https://github.com/Ysfcelikkaya/Bitirme_Projesi.git
 cd Bitirme_Projesi/HospitalApp
 ```
 
-### Adım 2: Veritabanı Bağlantısını Ayarlayın
-`appsettings.json` dosyalarındaki `ConnectionStrings:Default` bölümünün yerel SQL Server ayarlarınıza uygun olduğundan emin olun.
+### AdÄ±m 2: VeritabanÄ± BaÄŸlantÄ±sÄ±nÄ± AyarlayÄ±n
+`appsettings.json` dosyalarÄ±ndaki `ConnectionStrings:Default` bÃ¶lÃ¼mÃ¼nÃ¼n yerel SQL Server ayarlarÄ±nÄ±za uygun olduÄŸundan emin olun.
 
-### Adım 3: Bağımlılıkları Yükleyin ve Derleyin
+### AdÄ±m 3: BaÄŸÄ±mlÄ±lÄ±klarÄ± YÃ¼kleyin ve Derleyin
 
-Projeyi derlemek için terminalde aşağıdaki komutu çalıştırın:
+Projeyi derlemek iÃ§in terminalde aÅŸaÄŸÄ±daki komutu Ã§alÄ±ÅŸtÄ±rÄ±n:
 
 ```bash
 dotnet build
 ```
 
-### Adım 4: Projeyi Çalıştırın
+### AdÄ±m 4: Projeyi Ã‡alÄ±ÅŸtÄ±rÄ±n
 
-Önce API projesini, ardından MVC projesini çalıştırın:
+Ã–nce API projesini, ardÄ±ndan MVC projesini Ã§alÄ±ÅŸtÄ±rÄ±n:
 
 ```bash
-# API projesi için
+# API projesi iÃ§in
 cd HospitalAppApi/HospitalAppApi
 dotnet run
 
-# Yeni bir terminalde MVC projesi için
+# Yeni bir terminalde MVC projesi iÃ§in
 cd ../../HospitalAppMvc/HospitalAppMvc
 dotnet run
 ```
 
-Tarayıcınız üzerinden MVC uygulamasına veya Swagger dökümantasyon sayfasına (API portu üzerinden) ulaşabilirsiniz.
+TarayÄ±cÄ±nÄ±z Ã¼zerinden MVC uygulamasÄ±na veya Swagger dÃ¶kÃ¼mantasyon sayfasÄ±na (API portu Ã¼zerinden) ulaÅŸabilirsiniz.
 
 ---
 
-## 🗂️ PROJE MİMARİSİ (Çok Katmanlı Yapı)
+## ğŸ—‚ï¸ PROJE MÄ°MARÄ°SÄ° (Ã‡ok KatmanlÄ± YapÄ±)
 
-Proje dizin yapısı, anlaşılabilirlik ve sürdürülebilirlik açısından Çok Katmanlı (N-Tier) standartlarına uygun olarak tasarlanmıştır:
+Proje dizin yapÄ±sÄ±, anlaÅŸÄ±labilirlik ve sÃ¼rdÃ¼rÃ¼lebilirlik aÃ§Ä±sÄ±ndan Ã‡ok KatmanlÄ± (N-Tier) standartlarÄ±na uygun olarak tasarlanmÄ±ÅŸtÄ±r:
 
 ```text
-📂 HospitalApp
-├── 📁 HospitalAppApi/    # RESTful servislerin barındırıldığı backend katmanı
-├── 📁 HospitalAppMvc/    # Web API ile haberleşen son kullanıcı arayüz katmanı
-└── 📁 HospitalAppDppr/   # Dapper (Micro-ORM) ile veri erişimi yapılan katman
+ğŸ“‚ HospitalApp
+â”œâ”€â”€ ğŸ“ HospitalAppApi/    # RESTful servislerin barÄ±ndÄ±rÄ±ldÄ±ÄŸÄ± backend katmanÄ±
+â”œâ”€â”€ ğŸ“ HospitalAppMvc/    # Web API ile haberleÅŸen son kullanÄ±cÄ± arayÃ¼z katmanÄ±
+â””â”€â”€ ğŸ“ HospitalAppDppr/   # Dapper (Micro-ORM) ile veri eriÅŸimi yapÄ±lan katman
 ```
 
 ---
 
-## 📸 EKRAN GÖRÜNTÜLERİ
+## ğŸ“¸ EKRAN GÃ–RÃœNTÃœLERÄ°
 
-### 🌐 MVC Ön Yüz (Kullanıcı Arayüzü)
+### ğŸŒ MVC Ã–n YÃ¼z (KullanÄ±cÄ± ArayÃ¼zÃ¼)
 
-**1. Ana Karşılama Ekranı**
+**1. Ana KarÅŸÄ±lama EkranÄ±**
 ![Ana Sayfa](Screenshots/mvc1.png)
-*Hastaların sisteme giriş yapabileceği, kayıt olabileceği ve e-randevu ekranlarına yönlendirildiği modern ana sayfa.*
+*HastalarÄ±n sisteme giriÅŸ yapabileceÄŸi, kayÄ±t olabileceÄŸi ve e-randevu ekranlarÄ±na yÃ¶nlendirildiÄŸi modern ana sayfa.*
 
-**2. Kullanıcı Kayıt Ekranı**
-![Kayıt Ekranı](Screenshots/mvc3.png)
-*Sisteme ilk defa giriş yapacak hastalar için hazırlanmış kullanıcı dostu kayıt olma sayfası.*
+**2. KullanÄ±cÄ± KayÄ±t EkranÄ±**
+![KayÄ±t EkranÄ±](Screenshots/mvc3.png)
+*Sisteme ilk defa giriÅŸ yapacak hastalar iÃ§in hazÄ±rlanmÄ±ÅŸ kullanÄ±cÄ± dostu kayÄ±t olma sayfasÄ±.*
 
-**3. Şifre Yenileme Ekranı**
-![Şifremi Unuttum](Screenshots/mvc2.png)
-*Kullanıcıların unuttukları şifreleri güvenli bir şekilde sıfırlayabildikleri şifre yenileme sayfası.*
+**3. Åifre Yenileme EkranÄ±**
+![Åifremi Unuttum](Screenshots/mvc2.png)
+*KullanÄ±cÄ±larÄ±n unuttuklarÄ± ÅŸifreleri gÃ¼venli bir ÅŸekilde sÄ±fÄ±rlayabildikleri ÅŸifre yenileme sayfasÄ±.*
 
-**4. Yönetim Paneli (Admin Dashboard)**
+**4. YÃ¶netim Paneli (Admin Dashboard)**
 ![Dashboard](Screenshots/mvc4_dashboard.png)
-*Hastane yöneticileri ve doktorlar için tasarlanmış; istatistiklerin, randevuların ve gelirlerin takip edildiği kapsamlı kontrol paneli.*
+*Hastane yÃ¶neticileri ve doktorlar iÃ§in tasarlanmÄ±ÅŸ; istatistiklerin, randevularÄ±n ve gelirlerin takip edildiÄŸi kapsamlÄ± kontrol paneli.*
 
-**5. Semptom Kontrol Botu (Akıllı Yönlendirme)**
+**5. Semptom Kontrol Botu (AkÄ±llÄ± YÃ¶nlendirme)**
 ![Semptom Botu](Screenshots/mvc5_chatbot.png)
-*Hastaların şikayetlerini dinleyip onları doğru polikliniğe (Örn: Göz Hastalıkları) yönlendiren yenilikçi asistan modülü.*
+*HastalarÄ±n ÅŸikayetlerini dinleyip onlarÄ± doÄŸru polikliniÄŸe (Ã–rn: GÃ¶z HastalÄ±klarÄ±) yÃ¶nlendiren yenilikÃ§i asistan modÃ¼lÃ¼.*
 
-**6. Muayene ve Reçete Ekranı (Doktor Paneli)**
-![Muayene Kaydı](Screenshots/mvc6_muayene.png)
-*Doktorların hastalar için tanı koyduğu, reçete yazdığı ve tahlil sonuçlarını sisteme girdiği kapsamlı muayene kayıt ekranı.*
+**6. Muayene ve ReÃ§ete EkranÄ± (Doktor Paneli)**
+![Muayene KaydÄ±](Screenshots/mvc6_muayene.png)
+*DoktorlarÄ±n hastalar iÃ§in tanÄ± koyduÄŸu, reÃ§ete yazdÄ±ÄŸÄ± ve tahlil sonuÃ§larÄ±nÄ± sisteme girdiÄŸi kapsamlÄ± muayene kayÄ±t ekranÄ±.*
 
-**7. Yeni Fatura Kesme İşlemi**
+**7. Yeni Fatura Kesme Ä°ÅŸlemi**
 ![Fatura Kesme](Screenshots/mvc7_fatura.png)
-*Hastaların ayakta (randevulu) veya yatarak (oda yatışlı) tedavileri için detaylı faturalandırma ve ödeme yönetim ekranı.*
+*HastalarÄ±n ayakta (randevulu) veya yatarak (oda yatÄ±ÅŸlÄ±) tedavileri iÃ§in detaylÄ± faturalandÄ±rma ve Ã¶deme yÃ¶netim ekranÄ±.*
 
-**8. Yeni Doktor ve Poliklinik Tanımlama**
+**8. Yeni Doktor ve Poliklinik TanÄ±mlama**
 ![Doktor Ekleme](Screenshots/mvc8_doktor.png)
-*Sisteme yeni uzman hekimlerin unvan, poliklinik ve hesap bilgileriyle birlikte eklendiği yetkilendirme sayfası.*
+*Sisteme yeni uzman hekimlerin unvan, poliklinik ve hesap bilgileriyle birlikte eklendiÄŸi yetkilendirme sayfasÄ±.*
 
-**9. Randevularım Listesi**
+**9. RandevularÄ±m Listesi**
 ![Randevular](Screenshots/mvc9_randevularim.png)
-*Geçmiş ve aktif randevuların durumlarının takip edilip iptal/tamamlama işlemlerinin yapıldığı liste.*
+*GeÃ§miÅŸ ve aktif randevularÄ±n durumlarÄ±nÄ±n takip edilip iptal/tamamlama iÅŸlemlerinin yapÄ±ldÄ±ÄŸÄ± liste.*
 
-**10. Yeni Randevu Alma Ekranı**
+**10. Yeni Randevu Alma EkranÄ±**
 ![Yeni Randevu](Screenshots/mvc10_yenirandevu.png)
-*Poliklinik ve doktora göre saat/tarih seçilerek anında randevu oluşturulan panel.*
+*Poliklinik ve doktora gÃ¶re saat/tarih seÃ§ilerek anÄ±nda randevu oluÅŸturulan panel.*
 
-**11. Detaylı Muayene Raporu**
+**11. DetaylÄ± Muayene Raporu**
 ![Muayene Raporu](Screenshots/mvc11_muayenerapor.png)
-*Hastanın aldığı tanı, ilaçlar, laboratuvar sonuçları ve doktor notlarının bulunduğu PDF/çıktı alınabilir rapor.*
+*HastanÄ±n aldÄ±ÄŸÄ± tanÄ±, ilaÃ§lar, laboratuvar sonuÃ§larÄ± ve doktor notlarÄ±nÄ±n bulunduÄŸu PDF/Ã§Ä±ktÄ± alÄ±nabilir rapor.*
 
-**12. Faturalar ve Ödemeler Listesi**
+**12. Faturalar ve Ã–demeler Listesi**
 ![Faturalar](Screenshots/mvc12_faturalistesi.png)
-*Geçmiş faturaların, tutarların ve ödeme durumlarının (Ödendi/Ödenmedi) listelendiği ekran.*
+*GeÃ§miÅŸ faturalarÄ±n, tutarlarÄ±n ve Ã¶deme durumlarÄ±nÄ±n (Ã–dendi/Ã–denmedi) listelendiÄŸi ekran.*
 
-**13. Hasta Listesi ve Yönetimi**
+**13. Hasta Listesi ve YÃ¶netimi**
 ![Hasta Listesi](Screenshots/mvc13_hastalistesi.png)
-*Kayıtlı hastaların filtrelenebildiği, excel/pdf olarak indirilebildiği yönetim paneli listesi.*
+*KayÄ±tlÄ± hastalarÄ±n filtrelenebildiÄŸi, excel/pdf olarak indirilebildiÄŸi yÃ¶netim paneli listesi.*
 
-**14. Hasta Profil Tanımlama Ekranı**
-![Hasta Kayıt](Screenshots/mvc14_hastakayit.png)
-*Yeni hastaların T.C. Kimlik, kan grubu ve iletişim bilgileriyle sisteme kaydedildiği detaylı form.*
+**14. Hasta Profil TanÄ±mlama EkranÄ±**
+![Hasta KayÄ±t](Screenshots/mvc14_hastakayit.png)
+*Yeni hastalarÄ±n T.C. Kimlik, kan grubu ve iletiÅŸim bilgileriyle sisteme kaydedildiÄŸi detaylÄ± form.*
 
-**15. Dinamik PDF Rapor Çıktısı**
+**15. Dinamik PDF Rapor Ã‡Ä±ktÄ±sÄ±**
 ![PDF Rapor](Screenshots/mvc15_pdfrapor.png)
-*Sistem üzerinden anlık olarak oluşturulan kurumsal PDF dökümleri (Hasta raporu, fatura vb).*
+*Sistem Ã¼zerinden anlÄ±k olarak oluÅŸturulan kurumsal PDF dÃ¶kÃ¼mleri (Hasta raporu, fatura vb).*
 
-**16. Sistem Kullanıcıları ve Yetkilendirme**
-![Kullanıcı Listesi](Screenshots/mvc16_kullanicilar.png)
-*Yönetici, Doktor ve Hasta rollerine sahip tüm kullanıcıların yönetildiği merkezi liste.*
+**16. Sistem KullanÄ±cÄ±larÄ± ve Yetkilendirme**
+![KullanÄ±cÄ± Listesi](Screenshots/mvc16_kullanicilar.png)
+*YÃ¶netici, Doktor ve Hasta rollerine sahip tÃ¼m kullanÄ±cÄ±larÄ±n yÃ¶netildiÄŸi merkezi liste.*
 
-**17. Hastane Doktorları Listesi**
+**17. Hastane DoktorlarÄ± Listesi**
 ![Doktor Listesi](Screenshots/mvc17_doktorlar.png)
-*Sistemdeki tüm uzman doktorların ve polikliniklerinin görüntülendiği yönetim paneli sayfası.*
+*Sistemdeki tÃ¼m uzman doktorlarÄ±n ve polikliniklerinin gÃ¶rÃ¼ntÃ¼lendiÄŸi yÃ¶netim paneli sayfasÄ±.*
 
-**18. Yeni Kullanıcı Hesabı Açma**
-![Yeni Kullanıcı](Screenshots/mvc18_yenikullanici.png)
-*Sisteme yetkili (Admin, Doktor) veya standart kullanıcı (Hasta) hesaplarının tanımlandığı modal ekranı.*
+**18. Yeni KullanÄ±cÄ± HesabÄ± AÃ§ma**
+![Yeni KullanÄ±cÄ±](Screenshots/mvc18_yenikullanici.png)
+*Sisteme yetkili (Admin, Doktor) veya standart kullanÄ±cÄ± (Hasta) hesaplarÄ±nÄ±n tanÄ±mlandÄ±ÄŸÄ± modal ekranÄ±.*
 
 **19. Poliklinikler Listesi**
 ![Poliklinikler](Screenshots/mvc19_poliklinikler.png)
-*Hastanede bulunan tüm tıbbi birimlerin (Kardiyoloji, Göz vb.) yönetildiği sayfa.*
+*Hastanede bulunan tÃ¼m tÄ±bbi birimlerin (Kardiyoloji, GÃ¶z vb.) yÃ¶netildiÄŸi sayfa.*
 
-**20. Yeni Poliklinik Ekleme Modalı**
+**20. Yeni Poliklinik Ekleme ModalÄ±**
 ![Yeni Poliklinik](Screenshots/mvc20_yenipoliklinik.png)
-*Sisteme yeni bir hastane bölümünün adı ve açıklamasıyla birlikte kaydedilmesi.*
+*Sisteme yeni bir hastane bÃ¶lÃ¼mÃ¼nÃ¼n adÄ± ve aÃ§Ä±klamasÄ±yla birlikte kaydedilmesi.*
 
-**21. Yatan Hasta Odaları Listesi**
+**21. Yatan Hasta OdalarÄ± Listesi**
 ![Odalar](Screenshots/mvc21_odalar.png)
-*Standart, VIP ve Yoğun Bakım (ICU) odalarının "Dolu/Boş" durumlarının takip edildiği yönetim ekranı.*
+*Standart, VIP ve YoÄŸun BakÄ±m (ICU) odalarÄ±nÄ±n "Dolu/BoÅŸ" durumlarÄ±nÄ±n takip edildiÄŸi yÃ¶netim ekranÄ±.*
 
-**22. Yeni Oda Tanımlama Modalı**
+**22. Yeni Oda TanÄ±mlama ModalÄ±**
 ![Yeni Oda](Screenshots/mvc22_yenioda.png)
-*Belirli bir polikliniğe bağlı yeni odaların kapasite ve tip özellikleriyle sisteme eklenmesi.*
+*Belirli bir polikliniÄŸe baÄŸlÄ± yeni odalarÄ±n kapasite ve tip Ã¶zellikleriyle sisteme eklenmesi.*
 
-**23. Oda Durumu Düzenleme**
-![Oda Düzenle](Screenshots/mvc23_odaduzenle.png)
-*Hastane personelinin yatan hastalar için odanın "Dolu mu?" durumunu anlık olarak değiştirebildiği ekran.*
+**23. Oda Durumu DÃ¼zenleme**
+![Oda DÃ¼zenle](Screenshots/mvc23_odaduzenle.png)
+*Hastane personelinin yatan hastalar iÃ§in odanÄ±n "Dolu mu?" durumunu anlÄ±k olarak deÄŸiÅŸtirebildiÄŸi ekran.*
 
-**24. Yatan Hastalar (Yatışlar) Listesi**
+**24. Yatan Hastalar (YatÄ±ÅŸlar) Listesi**
 ![Yatan Hastalar](Screenshots/mvc24_yatan_hastalar.png)
-*Yatan hastaların oda numaraları, yatış tarihleri ve taburcu durumlarının yönetildiği sayfa.*
+*Yatan hastalarÄ±n oda numaralarÄ±, yatÄ±ÅŸ tarihleri ve taburcu durumlarÄ±nÄ±n yÃ¶netildiÄŸi sayfa.*
 
-**25. Yeni Hasta Yatışı Modalı**
-![Hasta Yatışı](Screenshots/mvc25_yeni_yatis.png)
-*Poliklinik randevusu sonrası hastanın hastaneye yatışının boş odalara göre yapıldığı tahsis ekranı.*
+**25. Yeni Hasta YatÄ±ÅŸÄ± ModalÄ±**
+![Hasta YatÄ±ÅŸÄ±](Screenshots/mvc25_yeni_yatis.png)
+*Poliklinik randevusu sonrasÄ± hastanÄ±n hastaneye yatÄ±ÅŸÄ±nÄ±n boÅŸ odalara gÃ¶re yapÄ±ldÄ±ÄŸÄ± tahsis ekranÄ±.*
 
-**26. Fatura ve Ödeme Durumu Takibi**
+**26. Fatura ve Ã–deme Durumu Takibi**
 ![Fatura Durumu](Screenshots/mvc26_fatura_odeme_durumu.png)
-*Vezne personelinin tüm faturaları "Ödendi" veya "Ödenmedi" durumlarına göre filtreleyip takip ettiği liste.*
+*Vezne personelinin tÃ¼m faturalarÄ± "Ã–dendi" veya "Ã–denmedi" durumlarÄ±na gÃ¶re filtreleyip takip ettiÄŸi liste.*
 
-**27. Online Ödeme ve Tahsilat**
-![Fatura Ödendi](Screenshots/mvc27_fatura_odendi.png)
-*Hastaların kredi kartı ile fatura ödemesi yaptıktan sonra anında sistemde "Ödendi" durumuna geçişi.*
+**27. Online Ã–deme ve Tahsilat**
+![Fatura Ã–dendi](Screenshots/mvc27_fatura_odendi.png)
+*HastalarÄ±n kredi kartÄ± ile fatura Ã¶demesi yaptÄ±ktan sonra anÄ±nda sistemde "Ã–dendi" durumuna geÃ§iÅŸi.*
 
-**28. Kurumsal Fatura PDF Çıktısı**
+**28. Kurumsal Fatura PDF Ã‡Ä±ktÄ±sÄ±**
 ![Fatura PDF](Screenshots/mvc28_fatura_pdf.png)
-*Maliye ve yasal süreçlere uygun, hastane logolu "Tahsil Edildi" kaşeli PDF fatura dökümü.*
+*Maliye ve yasal sÃ¼reÃ§lere uygun, hastane logolu "Tahsil Edildi" kaÅŸeli PDF fatura dÃ¶kÃ¼mÃ¼.*
 
-**29. Hasta Paneli: Randevularım**
+**29. Hasta Paneli: RandevularÄ±m**
 ![Hasta Randevular](Screenshots/mvc29_hasta_randevularim.png)
-*Hastanın sisteme giriş yaptığında kendi aktif ve geçmiş randevularını görebildiği kişisel profil sayfası.*
+*HastanÄ±n sisteme giriÅŸ yaptÄ±ÄŸÄ±nda kendi aktif ve geÃ§miÅŸ randevularÄ±nÄ± gÃ¶rebildiÄŸi kiÅŸisel profil sayfasÄ±.*
 
 **30. Hasta Paneli: Yeni Randevu Al**
 ![Hasta Yeni Randevu](Screenshots/mvc30_hasta_yeni_randevu.png)
-*Hastaların poliklinik ve uygun doktora göre kendi kendilerine dijital olarak randevu alabildiği takvim paneli.*
+*HastalarÄ±n poliklinik ve uygun doktora gÃ¶re kendi kendilerine dijital olarak randevu alabildiÄŸi takvim paneli.*
 
-**31. Hasta Paneli: Muayene Raporlarım**
+**31. Hasta Paneli: Muayene RaporlarÄ±m**
 ![Hasta Raporlar](Screenshots/mvc31_hasta_raporlarim.png)
-*Hastanın kendi laboratuvar (kan/röntgen) sonuçlarına, teşhislerine ve reçetelerine online erişim ekranı.*
+*HastanÄ±n kendi laboratuvar (kan/rÃ¶ntgen) sonuÃ§larÄ±na, teÅŸhislerine ve reÃ§etelerine online eriÅŸim ekranÄ±.*
 
-**32. Tıbbi Muayene PDF Raporu**
-![Tıbbi Rapor PDF](Screenshots/mvc32_tibbi_rapor_pdf.png)
-*Hastanın işyeri veya diğer kurumlar için indirebildiği, doktor imzalı resmi tıbbi muayene raporu.*
+**32. TÄ±bbi Muayene PDF Raporu**
+![TÄ±bbi Rapor PDF](Screenshots/mvc32_tibbi_rapor_pdf.png)
+*HastanÄ±n iÅŸyeri veya diÄŸer kurumlar iÃ§in indirebildiÄŸi, doktor imzalÄ± resmi tÄ±bbi muayene raporu.*
 
-**33. Hasta Paneli: Faturalarım**
+**33. Hasta Paneli: FaturalarÄ±m**
 ![Hasta Faturalar](Screenshots/mvc33_hasta_faturalarim.png)
-*Hastanın aldığı sağlık hizmetlerinin masraflarını ve güncel borç durumunu görebildiği finans ekranı.*
+*HastanÄ±n aldÄ±ÄŸÄ± saÄŸlÄ±k hizmetlerinin masraflarÄ±nÄ± ve gÃ¼ncel borÃ§ durumunu gÃ¶rebildiÄŸi finans ekranÄ±.*
 
-### 🔌 API / Swagger (Servis Uç Noktaları)
+### ğŸ”Œ API / Swagger (Servis UÃ§ NoktalarÄ±)
 <p align="center">
   <img src="Screenshots/api.png" width="48%" />
   <img src="Screenshots/api2.png" width="48%" />
 </p>
 
-### ⚡ Dapper Entegrasyonu
-![Dapper Kullanımı](Screenshots/dapper.png)
- 
- 
+### âš¡ Dapper Entegrasyonu
+![Dapper KullanÄ±mÄ±](Screenshots/dapper.png)
+
+ 
