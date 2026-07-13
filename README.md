@@ -1,5 +1,7 @@
 # SoftITo Backend 2026
 
+**feat: SoftITo 2026 Backend Bitirme Projesi**
+
 Bu repo, SoftITo 2026 eğitim sürecinde geliştirilen 10 adet ASP.NET Core projesini içermektedir. Her proje, bir öncekinin üzerine yeni bir teknoloji veya mimari yaklaşım ekleyerek ilerlemektedir.
 
 ## Projeler
