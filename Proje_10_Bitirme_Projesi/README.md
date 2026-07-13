@@ -286,3 +286,5 @@ Proje dizin yapısı, anlaşılabilirlik ve sürdürülebilirlik açısından Ç
 
 ### ⚡ Dapper Entegrasyonu
 ![Dapper Kullanımı](Screenshots/dapper.png)
+ 
+ 
