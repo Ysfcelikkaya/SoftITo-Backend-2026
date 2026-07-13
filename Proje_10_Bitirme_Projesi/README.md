@@ -166,6 +166,10 @@ Proje dizin yapısı, anlaşılabilirlik ve sürdürülebilirlik açısından Ç
 ![Semptom Botu](Screenshots/mvc5_chatbot.png)
 *Hastaların şikayetlerini dinleyip onları doğru polikliniğe (Örn: Göz Hastalıkları) yönlendiren yenilikçi asistan modülü.*
 
+**6. Muayene ve Reçete Ekranı (Doktor Paneli)**
+![Muayene Kaydı](Screenshots/mvc6_muayene.png)
+*Doktorların hastalar için tanı koyduğu, reçete yazdığı ve tahlil sonuçlarını sisteme girdiği kapsamlı muayene kayıt ekranı.*
+
 ### 🔌 API / Swagger (Servis Uç Noktaları)
 <p align="center">
   <img src="Screenshots/api.png" width="48%" />
