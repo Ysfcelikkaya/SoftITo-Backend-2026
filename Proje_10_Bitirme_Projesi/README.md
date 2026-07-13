@@ -158,6 +158,10 @@ Proje dizin yapısı, anlaşılabilirlik ve sürdürülebilirlik açısından Ç
 ![Şifremi Unuttum](Screenshots/mvc2.png)
 *Kullanıcıların unuttukları şifreleri güvenli bir şekilde sıfırlayabildikleri şifre yenileme sayfası.*
 
+**4. Yönetim Paneli (Admin Dashboard)**
+![Dashboard](Screenshots/mvc4_dashboard.png)
+*Hastane yöneticileri ve doktorlar için tasarlanmış; istatistiklerin, randevuların ve gelirlerin takip edildiği kapsamlı kontrol paneli.*
+
 ### 🔌 API / Swagger (Servis Uç Noktaları)
 <p align="center">
   <img src="Screenshots/api.png" width="48%" />
