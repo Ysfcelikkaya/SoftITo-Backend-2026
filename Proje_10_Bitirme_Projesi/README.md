@@ -238,6 +238,46 @@ Proje dizin yapısı, anlaşılabilirlik ve sürdürülebilirlik açısından Ç
 ![Oda Düzenle](Screenshots/mvc23_odaduzenle.png)
 *Hastane personelinin yatan hastalar için odanın "Dolu mu?" durumunu anlık olarak değiştirebildiği ekran.*
 
+**24. Yatan Hastalar (Yatışlar) Listesi**
+![Yatan Hastalar](Screenshots/mvc24_yatan_hastalar.png)
+*Yatan hastaların oda numaraları, yatış tarihleri ve taburcu durumlarının yönetildiği sayfa.*
+
+**25. Yeni Hasta Yatışı Modalı**
+![Hasta Yatışı](Screenshots/mvc25_yeni_yatis.png)
+*Poliklinik randevusu sonrası hastanın hastaneye yatışının boş odalara göre yapıldığı tahsis ekranı.*
+
+**26. Fatura ve Ödeme Durumu Takibi**
+![Fatura Durumu](Screenshots/mvc26_fatura_odeme_durumu.png)
+*Vezne personelinin tüm faturaları "Ödendi" veya "Ödenmedi" durumlarına göre filtreleyip takip ettiği liste.*
+
+**27. Online Ödeme ve Tahsilat**
+![Fatura Ödendi](Screenshots/mvc27_fatura_odendi.png)
+*Hastaların kredi kartı ile fatura ödemesi yaptıktan sonra anında sistemde "Ödendi" durumuna geçişi.*
+
+**28. Kurumsal Fatura PDF Çıktısı**
+![Fatura PDF](Screenshots/mvc28_fatura_pdf.png)
+*Maliye ve yasal süreçlere uygun, hastane logolu "Tahsil Edildi" kaşeli PDF fatura dökümü.*
+
+**29. Hasta Paneli: Randevularım**
+![Hasta Randevular](Screenshots/mvc29_hasta_randevularim.png)
+*Hastanın sisteme giriş yaptığında kendi aktif ve geçmiş randevularını görebildiği kişisel profil sayfası.*
+
+**30. Hasta Paneli: Yeni Randevu Al**
+![Hasta Yeni Randevu](Screenshots/mvc30_hasta_yeni_randevu.png)
+*Hastaların poliklinik ve uygun doktora göre kendi kendilerine dijital olarak randevu alabildiği takvim paneli.*
+
+**31. Hasta Paneli: Muayene Raporlarım**
+![Hasta Raporlar](Screenshots/mvc31_hasta_raporlarim.png)
+*Hastanın kendi laboratuvar (kan/röntgen) sonuçlarına, teşhislerine ve reçetelerine online erişim ekranı.*
+
+**32. Tıbbi Muayene PDF Raporu**
+![Tıbbi Rapor PDF](Screenshots/mvc32_tibbi_rapor_pdf.png)
+*Hastanın işyeri veya diğer kurumlar için indirebildiği, doktor imzalı resmi tıbbi muayene raporu.*
+
+**33. Hasta Paneli: Faturalarım**
+![Hasta Faturalar](Screenshots/mvc33_hasta_faturalarim.png)
+*Hastanın aldığı sağlık hizmetlerinin masraflarını ve güncel borç durumunu görebildiği finans ekranı.*
+
 ### 🔌 API / Swagger (Servis Uç Noktaları)
 <p align="center">
   <img src="Screenshots/api.png" width="48%" />
