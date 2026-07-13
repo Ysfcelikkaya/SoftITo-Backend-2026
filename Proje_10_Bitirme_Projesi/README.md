@@ -145,7 +145,18 @@ Proje dizin yapısı, anlaşılabilirlik ve sürdürülebilirlik açısından Ç
 ## 📸 EKRAN GÖRÜNTÜLERİ
 
 ### 🌐 MVC Ön Yüz (Kullanıcı Arayüzü)
-![MVC Arayüzü](Screenshots/mvc.png)
+
+**1. Ana Karşılama Ekranı**
+![Ana Sayfa](Screenshots/mvc1.png)
+*Hastaların sisteme giriş yapabileceği, kayıt olabileceği ve e-randevu ekranlarına yönlendirildiği modern ana sayfa.*
+
+**2. Kullanıcı Kayıt Ekranı**
+![Kayıt Ekranı](Screenshots/mvc3.png)
+*Sisteme ilk defa giriş yapacak hastalar için hazırlanmış kullanıcı dostu kayıt olma sayfası.*
+
+**3. Şifre Yenileme Ekranı**
+![Şifremi Unuttum](Screenshots/mvc2.png)
+*Kullanıcıların unuttukları şifreleri güvenli bir şekilde sıfırlayabildikleri şifre yenileme sayfası.*
 
 ### 🔌 API / Swagger (Servis Uç Noktaları)
 <p align="center">
