@@ -178,6 +178,26 @@ Proje dizin yapısı, anlaşılabilirlik ve sürdürülebilirlik açısından Ç
 ![Doktor Ekleme](Screenshots/mvc8_doktor.png)
 *Sisteme yeni uzman hekimlerin unvan, poliklinik ve hesap bilgileriyle birlikte eklendiği yetkilendirme sayfası.*
 
+**9. Randevularım Listesi**
+![Randevular](Screenshots/mvc9_randevularim.png)
+*Geçmiş ve aktif randevuların durumlarının takip edilip iptal/tamamlama işlemlerinin yapıldığı liste.*
+
+**10. Yeni Randevu Alma Ekranı**
+![Yeni Randevu](Screenshots/mvc10_yenirandevu.png)
+*Poliklinik ve doktora göre saat/tarih seçilerek anında randevu oluşturulan panel.*
+
+**11. Detaylı Muayene Raporu**
+![Muayene Raporu](Screenshots/mvc11_muayenerapor.png)
+*Hastanın aldığı tanı, ilaçlar, laboratuvar sonuçları ve doktor notlarının bulunduğu PDF/çıktı alınabilir rapor.*
+
+**12. Faturalar ve Ödemeler Listesi**
+![Faturalar](Screenshots/mvc12_faturalistesi.png)
+*Geçmiş faturaların, tutarların ve ödeme durumlarının (Ödendi/Ödenmedi) listelendiği ekran.*
+
+**13. Hasta Listesi ve Yönetimi**
+![Hasta Listesi](Screenshots/mvc13_hastalistesi.png)
+*Kayıtlı hastaların filtrelenebildiği, excel/pdf olarak indirilebildiği yönetim paneli listesi.*
+
 ### 🔌 API / Swagger (Servis Uç Noktaları)
 <p align="center">
   <img src="Screenshots/api.png" width="48%" />
